@@ -1,0 +1,131 @@
+<!-- This file is an ANT build script. ANT is a Java based build tool. -->
+<!-- It is available from http://ant.apache.org                        -->
+
+
+<project name="wsdl2html" basedir="." default="jar">
+
+
+	<property name="version" value="1.0" />
+
+
+
+	<property name="java.main.source.dir" value="src/main/" />
+	<property name="java.exampleWebService.source.dir" value="src/exampleWebService/" />
+
+
+
+	<property name="javac.main.dest" value="classes/main" />
+	<property name="javac.exampleWebService.dest" value="classes/exampleWebService" />
+
+
+	<property name="jar.main.dest" value="dist/main" />
+	<property name="jar.exampleWebService.dest" value="dist/exampleWebService" />
+
+	<!-- The jar file that the jar task will generate -->
+	<property name="jar.filename" value="wsdl2html-${version}.jar" />
+	<property name="sources-jar.filename" value="wsdl2html-${version}-sources.jar" />
+	<property name="exampleWebService-jar.filename" value="wsdl2html-${version}-exampleWebService.jar" />
+
+
+	<property name="javac.source" value="1.6" />
+	<property name="javac.target" value="1.6" />
+
+
+
+	<!-- Construct compile classpath -->
+	<path id="compile.classpath">
+		<pathelement location="lib/commons-lang-2.4.jar" />
+		<pathelement location="lib/commons-io-1.4.jar" />
+	</path>
+
+	<target name="build" depends="build.core, build.exampleWebService" />
+
+	<target name="build.core">
+		<mkdir dir="${javac.main.dest}" />
+		<javac srcdir="${java.main.source.dir}" destdir="${javac.main.dest}" target="${javac.target}" source="${javac.source}" debug="on">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="build.exampleWebService" depends="build.core">
+		<mkdir dir="${javac.exampleWebService.dest}" />
+		<javac srcdir="${java.exampleWebService.source.dir}" destdir="${javac.exampleWebService.dest}" target="${javac.target}" source="${javac.source}" debug="on">
+		</javac>
+	</target>
+
+
+	<target name="clean">
+		<delete dir="${javac.main.dest}/" />
+		<delete dir="${javac.exampleWebService.dest}/" />
+
+		<delete dir="${jar.main.dest}/" />
+		<delete dir="${jar.exampleWebService.dest}/" />
+
+	</target>
+
+
+
+	<target name="jar" depends="dist.jar, dist-exampleWebService.jar, dist-sources.jar">
+	</target>
+
+
+	<target name="dist.jar" depends="build">
+		<mkdir dir="${jar.main.dest}" />
+		<delete>
+			<fileset dir="${jar.main.dest}">
+				<include name="${jar.filename}" />
+			</fileset>
+		</delete>
+
+		<jar jarfile="${jar.main.dest}/${jar.filename}" basedir="${javac.main.dest}">
+			<manifest>
+				<section name="org.jaxws">
+					<attribute name="Implementation-Title" value="wsdl2html" />
+					<attribute name="Implementation-Version" value="${version}" />
+				</section>
+			</manifest>
+			<metainf dir="." includes="NOTICE,LICENSE" />
+		</jar>
+	</target>
+
+
+
+	<target name="dist-sources.jar">
+		<mkdir dir="${jar.main.dest}" />
+		<delete>
+			<fileset dir="${jar.main.dest}" includes="${sources-jar.filename}" />
+		</delete>
+
+		<jar jarfile="${jar.main.dest}/${sources-jar.filename}" basedir="${java.main.source.dir}">
+			<manifest>
+				<section name="org.jaxws">
+					<attribute name="Implementation-Title" value="wsdl2html" />
+					<attribute name="Implementation-Version" value="${version}" />
+				</section>
+			</manifest>
+			<metainf dir="." includes="NOTICE,LICENSE" />
+		</jar>
+	</target>
+
+	<target name="dist-exampleWebService.jar" depends="build">
+		<mkdir dir="${jar.exampleWebService.dest}" />
+		<delete>
+			<fileset dir="${jar.exampleWebService.dest}">
+				<include name="${exampleWebService-jar.filename}" />
+			</fileset>
+		</delete>
+
+		<jar jarfile="${jar.exampleWebService.dest}/${exampleWebService-jar.filename}" basedir="${javac.exampleWebService.dest}">
+			<manifest>
+				<section name="org.jaxws">
+					<attribute name="Implementation-Title" value="wsdl2html" />
+					<attribute name="Implementation-Version" value="${version}" />
+				</section>
+			</manifest>
+			<metainf dir="." includes="NOTICE,LICENSE" />
+		</jar>
+	</target>
+
+
+</project>
+
