@@ -1,11 +1,9 @@
 package org.jaxws.wsdl2html.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.jws.WebService;
 
-import org.apache.commons.io.FileUtils;
 import org.jaxws.bytecodes2stub.service.ByteCodePackageLoadingService;
 import org.jaxws.stub2html.model.WebMethodStubSet;
 import org.jaxws.stub2html.model.WebServiceStubSet;
