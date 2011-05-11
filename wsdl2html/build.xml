@@ -127,5 +127,24 @@
 	</target>
 
 
+
+
+	<target name="tar" depends="jar">
+		<tar destfile="dist/wsdl2html-${version}-bin-src.tar.gz" compression="gzip">
+			<fileset dir="${jar.exampleWebService.dest}">
+				<include name="*.jar" />
+			</fileset>
+
+			<fileset dir="${jar.main.dest}">
+				<include name="*.jar" />
+			</fileset>
+
+		</tar>
+		
+		
+		
+
+	</target>
+
 </project>
 
