@@ -20,13 +20,11 @@ import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
  */
 public class Wsdl2ByteCodes {
 
-
-
 	public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws SystemProcessException {
 		String currentTime = formatDate(new Date(), "yyyyMMddHHmmssSSS");
 		File byteCodeDir = createByteCodesDir(byteCodesDirParent, currentTime);
 		String packageName = generatePakcageName(currentTime);
-		
+
 		byteCodeDir.mkdirs();
 		doWsImport(byteCodeDir.getAbsolutePath(), wsdlUrl, packageName);
 		return new ByteCodePackage(byteCodeDir, packageName);
@@ -51,9 +49,12 @@ public class Wsdl2ByteCodes {
 	private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws SystemProcessException {
 
 		List<String> cmdList = new ArrayList<String>();
-		cmdList.add("cmd.exe");
-		cmdList.add("/c");
-		cmdList.add(" wsimport");
+		if (isWindows()) {
+			cmdList.add("cmd.exe");
+			cmdList.add("/c");
+		}
+
+		cmdList.add("wsimport");
 		cmdList.add("-B-XautoNameResolution");
 		cmdList.add("-s");
 		cmdList.add(outputDir);
@@ -68,6 +69,10 @@ public class Wsdl2ByteCodes {
 		cmdList.toArray(cmdArray);
 		SystemProcessUtils.exec(cmdArray);
 
+	}
+
+	private static boolean isWindows() {
+		return System.getProperty("os.name").toLowerCase().contains("win");
 	}
 
 	static String formatDate(Date date, String pattern) {
