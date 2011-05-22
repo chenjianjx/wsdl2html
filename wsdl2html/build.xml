@@ -72,8 +72,6 @@
 		<delete dir="${javac.main.dest}/" />
 		<delete dir="${javac.exampleWebService.dest}/" />
 
-		<delete dir="${jar.main.dest}/" />
-		<delete dir="${jar.exampleWebService.dest}/" />
 
 	</target>
 
