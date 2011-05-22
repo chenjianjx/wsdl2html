@@ -16,6 +16,7 @@ public class WebMethodStubSet {
 	private List<Stub> requestStubs = new ArrayList<Stub>();
 	private Stub responseStub;
 	private StubTypeTreeRepository stubTypeTreeRepository = new StubTypeTreeRepository();
+	 
 
 	public String getMethodName() {
 		return methodName;
@@ -41,9 +42,13 @@ public class WebMethodStubSet {
 		requestStubs.add(stub);
 	}
 
-	public StubTypeTreeRepository getStubTypeTreeRepository() {
+	public StubTypeTreeRepository getStubTypeTreeRepository() {	   
 		return stubTypeTreeRepository;
 	}
+
+    public boolean isInheritanceInvolved() {
+        return !stubTypeTreeRepository.isEmpty();
+    }
 	
 	
 	

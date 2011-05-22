@@ -13,13 +13,14 @@ import javax.jws.WebResult;
  */
 public interface OrderSOAPService {
 
-	@WebMethod
-	public void placeOrder(@WebParam(name = "user-name") String userName, 
-			@WebParam(name = "password") String password, 
-			@WebParam(name = "order") Order order);
-	
+    @WebMethod
+    public void placeOrder(@WebParam(name = "user-name") String userName, @WebParam(name = "password") String password, @WebParam(name = "order") Order order);
 
-	@WebMethod
-	@WebResult(name = "orders")
-	public List<Order> findOrders(@WebParam(name = "user-id") Integer userId);
+    @WebMethod
+    @WebResult(name = "orders")
+    public List<Order> findOrders(@WebParam(name = "user-id") Integer userId);
+
+    @WebMethod
+    public void emptyMethod();
+
 }

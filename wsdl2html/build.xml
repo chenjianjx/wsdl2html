@@ -5,7 +5,7 @@
 <project name="wsdl2html" basedir="." default="jar">
 
 
-	<property name="version" value="1.0" />
+	<property name="version" value="1.0.1" />
 
 
 
@@ -34,23 +34,37 @@
 
 	<!-- Construct compile classpath -->
 	<path id="compile.classpath">
-		<pathelement location="lib/commons-lang-2.4.jar" />
-		<pathelement location="lib/commons-io-1.4.jar" />
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
 	</path>
 
-	<target name="build" depends="build.core, build.exampleWebService" />
+	<target name="build" depends="clean, build.core, build.exampleWebService" />
 
 	<target name="build.core">
 		<mkdir dir="${javac.main.dest}" />
 		<javac srcdir="${java.main.source.dir}" destdir="${javac.main.dest}" target="${javac.target}" source="${javac.source}" debug="on">
 			<classpath refid="compile.classpath" />
 		</javac>
+		<copy todir="${javac.main.dest}">
+			<fileset dir="${java.main.source.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+				<include name="**/*.ftl"/>
+			</fileset>							 
+		</copy>		
 	</target>
 
 	<target name="build.exampleWebService" depends="build.core">
 		<mkdir dir="${javac.exampleWebService.dest}" />
 		<javac srcdir="${java.exampleWebService.source.dir}" destdir="${javac.exampleWebService.dest}" target="${javac.target}" source="${javac.source}" debug="on">
 		</javac>
+		<copy todir="${javac.exampleWebService.dest}">
+			<fileset dir="${java.exampleWebService.source.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+			</fileset>							 
+		</copy>			
 	</target>
 
 

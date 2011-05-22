@@ -20,8 +20,9 @@ public class WebServiceStubSetFactory {
 	public static WebServiceStubSet createWebServiceStubSet(Class<?> webServiceClass) {
 		List<Method> methods = getWebMethods(webServiceClass);
 		WebServiceStubSet serviceStubs = new WebServiceStubSet();
+		serviceStubs.setWebServiceClass(webServiceClass);
 		for (Method method : methods) {
-			serviceStubs.addMethodStubs(createWebMethodStubSet(method));
+			serviceStubs.addMethodStub(createWebMethodStubSet(method));
 		}
 		return serviceStubs;
 	}
