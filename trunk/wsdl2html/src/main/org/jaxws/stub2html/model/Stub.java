@@ -25,7 +25,7 @@ public class Stub {
 	 */
 	private Class<?> type;
 
-	private boolean requried;
+	private boolean required;
 
 	private boolean multiOccurs;
 
@@ -47,12 +47,12 @@ public class Stub {
 		this.stubName = stubName;
 	}
 
-	public boolean isRequried() {
-		return requried;
+	public boolean isRequired() {
+		return required;
 	}
 
-	public void setRequried(boolean required) {
-		this.requried = required;
+	public void setRequired(boolean required) {
+		this.required = required;
 	}
 
 	public List<Stub> getChildStubs() {
@@ -90,7 +90,7 @@ public class Stub {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(stubName).append(type).append(requried).append(childStubs).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append(stubName).append(type).append(required).append(childStubs).toString();
 	}
 
 }
