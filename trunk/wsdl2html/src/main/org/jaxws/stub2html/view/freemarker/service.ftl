@@ -66,6 +66,7 @@
 			</table>
 		    <#list service.methodStubs as method>		
 		    	<div class="methodBody"> 		    		
+		    		<hr/>		
 					<a name="method${method_index + 1}"><h2>Method #${method_index + 1} ${method.methodName}</h2></a>
 						<#if (method.requestStubs?size > 0)>
 							<h3>Request</h3>

@@ -26,7 +26,7 @@ import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
  */
 public class Wsdl2ByteCodes {
 
-    public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws SystemProcessException {
+    public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws WsdlImportException {
         String currentTime = formatDate(new Date(), "yyyyMMddHHmmssSSS");
         File byteCodeDir = createByteCodesDir(byteCodesDirParent, currentTime);
         String packageName = generatePakcageName(currentTime);
@@ -52,7 +52,7 @@ public class Wsdl2ByteCodes {
         return StringUtils.join(fragments, ".");
     }
 
-    private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws SystemProcessException {
+    private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws WsdlImportException {
 
         File jaxbFile = copyDefaultJaxbFile(outputDir);
 
@@ -77,7 +77,11 @@ public class Wsdl2ByteCodes {
 
         String[] cmdArray = new String[cmdList.size()];
         cmdList.toArray(cmdArray);
-        SystemProcessUtils.exec(cmdArray);
+        try {
+            SystemProcessUtils.exec(cmdArray);
+        } catch (SystemProcessException e) {
+            throw new WsdlImportException(e.getConsoleOutput());
+        }
 
     }
 
@@ -89,7 +93,7 @@ public class Wsdl2ByteCodes {
         try {
 
             String packageName = getPackageName(Wsdl2ByteCodes.class);
-            String defaultJaxbFile =  StringUtils.replace(packageName, ".", "/") + "/default-jaxb.xml";
+            String defaultJaxbFile = StringUtils.replace(packageName, ".", "/") + "/default-jaxb.xml";
             inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(defaultJaxbFile);
             outputStream = new FileOutputStream(generatedJaxbFile);
             IOUtils.copy(inputStream, outputStream);

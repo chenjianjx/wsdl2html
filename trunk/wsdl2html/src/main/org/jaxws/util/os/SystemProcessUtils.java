@@ -1,6 +1,8 @@
 package org.jaxws.util.os;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import org.jaxws.util.io.StreamPrinter;
 
@@ -12,37 +14,40 @@ import org.jaxws.util.io.StreamPrinter;
  */
 public class SystemProcessUtils {
 
-	public static void exec(String[] cmdArray) throws SystemProcessException {
+    public static void exec(String[] cmdArray) throws SystemProcessException {
 
-		try {
-			Process p = Runtime.getRuntime().exec(cmdArray);
-			printErrorStream(p);
-			printInputStream(p);
+        try {
+            Process p = Runtime.getRuntime().exec(cmdArray);
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            correctErrorStream(p, output);
+            correctInputStream(p, output);
+            int returningCode = p.waitFor();
 
-			int returningCode = p.waitFor();
+            String consoleOutput = new String(output.toByteArray());
+            System.out.println(consoleOutput);
 
-			if (returningCode != 0) {
-				throw new SystemProcessException("Process returning code = " + returningCode);
-			}
-		} catch (IOException e) {
-			throw new SystemProcessException(e);
-		} catch (InterruptedException e) {
-			throw new SystemProcessException(e);
-		}
-	}
+            if (returningCode != 0) {
+                throw new SystemProcessException(returningCode, consoleOutput);
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
-	private static void printInputStream(Process p) {
-		if (p.getInputStream() != null) {
-			StreamPrinter infoStreamPrinter = new StreamPrinter(p.getInputStream(), "[INFO]", System.out);
-			infoStreamPrinter.start();
-		}
-	}
+    private static void correctInputStream(Process p, OutputStream out) {
+        if (p.getInputStream() != null) {
+            StreamPrinter infoStreamPrinter = new StreamPrinter(p.getInputStream(), "[INFO]", out);
+            infoStreamPrinter.start();
+        }
+    }
 
-	private static void printErrorStream(Process p) {
-		if (p.getErrorStream() != null) {
-			StreamPrinter errorStreamPrinter = new StreamPrinter(p.getErrorStream(), "[ERROR]", System.out);
-			errorStreamPrinter.start();
-		}
-	}
+    private static void correctErrorStream(Process p, OutputStream out) {
+        if (p.getErrorStream() != null) {
+            StreamPrinter errorStreamPrinter = new StreamPrinter(p.getErrorStream(), "[ERROR]", out);
+            errorStreamPrinter.start();
+        }
+    }
 
 }
