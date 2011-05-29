@@ -1,6 +1,6 @@
 package org.jaxws.stub2html.ui;
 
-import static org.jaxws.stub2html.view.freemarker.FreemarkerWebServiceDisplayEngine.createEngine;
+import static org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine.createEngine;
 
 import java.io.File;
 
