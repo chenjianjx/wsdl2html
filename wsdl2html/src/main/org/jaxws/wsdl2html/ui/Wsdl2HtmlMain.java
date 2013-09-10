@@ -2,13 +2,16 @@ package org.jaxws.wsdl2html.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.math.RandomUtils;
 import org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine;
-import org.jaxws.stub2html.view.freemarker.FilePathFreemarkerWebServiceDisplayEngine;
 import org.jaxws.stub2html.view.freemarker.FreemarkerWebServiceDisplayEngine;
 import org.jaxws.stub2html.view.simple.SimpleJavaNameDisplayStrategy;
-import org.jaxws.util.os.SystemProcessException;
+import org.jaxws.wsdl2bytecodes.service.Wsdl2ByteCodes.DeclarationCollisionException;
 import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
 import org.jaxws.wsdl2html.service.Wsdl2Html;
 
@@ -19,51 +22,75 @@ import org.jaxws.wsdl2html.service.Wsdl2Html;
  */
 public class Wsdl2HtmlMain {
 
-    public static void main(String[] args) throws  IOException, WsdlImportException {
+	private static final String ORIG_PKG_PARAM = "-origPkg";
 
-        if (args == null || args.length < 1) {
-            System.out.println("please input the wsdl");
-            return;
-        }
-        String wsdlUrl = args[0];
+	public static void main(String[] args) throws IOException, WsdlImportException {
 
-        File outputRootDir = new File("output/" + System.currentTimeMillis());
+		if (args == null || args.length == 0) {
+			System.out.println("Params: [" + ORIG_PKG_PARAM + "]  wsdlUrl [targetDir]");
+			return;
+		}
 
-        File byteCodeDir = getByteCodeDir(outputRootDir);
-        File htmlDir = getHtmlDir(outputRootDir);
+		List<String> argList = new ArrayList<String>(Arrays.asList(args));
 
-        System.out.println("Generating from " + wsdlUrl);
+		boolean useOrigPkg = false;
+		if (argList.contains(ORIG_PKG_PARAM)) {
+			useOrigPkg = true;
+			argList.remove(ORIG_PKG_PARAM);
+		}
 
-        FreemarkerWebServiceDisplayEngine displayEngine = createDisplayEngine(args);
+		String wsdlUrl = argList.get(0);
 
-        String html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine);
-        FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
+		File outputRootDir = new File("output/" + getUniqueNumber());
+		if (argList.size() > 1) {
+			outputRootDir = new File(argList.get(1));
+			outputRootDir.mkdirs();
+		}
 
-        outputRootDir.mkdirs();
-        System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
-    }
+		File byteCodeDir = getByteCodeDir(outputRootDir);
+		File htmlDir = getHtmlDir(outputRootDir);
 
-    private static FreemarkerWebServiceDisplayEngine createDisplayEngine(String[] args) {
-        FreemarkerWebServiceDisplayEngine displayEngine = null;
-        if (args.length > 1) {
-            File customTemplate = new File(args[1]);
-            displayEngine = FilePathFreemarkerWebServiceDisplayEngine.createEngine(new SimpleJavaNameDisplayStrategy(), customTemplate);
-        } else {
-            displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine(new SimpleJavaNameDisplayStrategy());
-        }
-        return displayEngine;
-    }
+		System.out.println("Generating from " + wsdlUrl);
 
-    private static File getHtmlDir(File outputRootDir) {
-        File htmlDir = new File(outputRootDir, "html");
-        htmlDir.mkdirs();
-        return htmlDir;
-    }
+		FreemarkerWebServiceDisplayEngine displayEngine = createDisplayEngine(argList);
+		String html = null;
+		try {
+			html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, useOrigPkg, displayEngine);
+		} catch (DeclarationCollisionException e) {
+			System.out.println("Failed to due to declaration exception. Please try again with flag: " + ORIG_PKG_PARAM);
+			return;
+		}
+		FileUtils.writeStringToFile(new File(htmlDir, "report-" + getUniqueNumber() + ".html"), html);
+		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
+	}
 
-    private static File getByteCodeDir(File outputRootDir) {
-        File byteCodeDir = new File(outputRootDir, "stubs");
-        byteCodeDir.mkdirs();
-        return byteCodeDir;
-    }
+	private static String getUniqueNumber() {
+		return System.currentTimeMillis() + "" + RandomUtils.nextLong();
+	}
+
+	private static FreemarkerWebServiceDisplayEngine createDisplayEngine(List<String> argList) {
+		FreemarkerWebServiceDisplayEngine displayEngine = null;
+		// if (argList.size() > 1) {
+		// File customTemplate = new File(argList.get(1));
+		// displayEngine =
+		// FilePathFreemarkerWebServiceDisplayEngine.createEngine(new
+		// SimpleJavaNameDisplayStrategy(), customTemplate);
+		// } else {
+		displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine(new SimpleJavaNameDisplayStrategy());
+		// }
+		return displayEngine;
+	}
+
+	private static File getHtmlDir(File outputRootDir) {
+		File htmlDir = new File(outputRootDir, "html");
+		htmlDir.mkdirs();
+		return htmlDir;
+	}
+
+	private static File getByteCodeDir(File outputRootDir) {
+		File byteCodeDir = new File(outputRootDir, "stubs-" + getUniqueNumber());
+		byteCodeDir.mkdirs();
+		return byteCodeDir;
+	}
 
 }

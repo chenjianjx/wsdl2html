@@ -19,25 +19,22 @@ import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
  */
 public class Wsdl2Html {
 
-    public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine) throws WsdlImportException  {
-        ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl);
-        Class<?> webServiceClass = getWebServiceClass(byteCodePackage);
-        WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
-        return displayEngine.displayWebSerivce(serviceStubSet);
-    }
-    
-    
-    
+	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, boolean useOrigPkg, WebServiceDisplayEngine displayEngine) throws WsdlImportException {
+		ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl, useOrigPkg);
+		Class<?> webServiceClass = getWebServiceClass(byteCodePackage);
+		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
+		return displayEngine.displayWebSerivce(serviceStubSet);
+	}
 
-    private static Class<?> getWebServiceClass(ByteCodePackage byteCodePackage) {
-        List<Class<?>> allClasses = ByteCodePackageLoadingService.loadAll(byteCodePackage);
+	private static Class<?> getWebServiceClass(ByteCodePackage byteCodePackage) {
+		List<Class<?>> allClasses = ByteCodePackageLoadingService.loadAll(byteCodePackage);
 
-        for (Class<?> clazz : allClasses) {
-            if (clazz.isInterface() && clazz.isAnnotationPresent(WebService.class)) {
-                return clazz;
-            }
-        }
-        throw new IllegalStateException("No WebService Class found ! ");
-    }
+		for (Class<?> clazz : allClasses) {
+			if (clazz.isInterface() && clazz.isAnnotationPresent(WebService.class)) {
+				return clazz;
+			}
+		}
+		throw new IllegalStateException("No WebService Class found ! ");
+	}
 
 }
