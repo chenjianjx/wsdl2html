@@ -1,8 +1,8 @@
 1. [http://code.google.com/p/wsdl2html/downloads/list Download] it
 
-2. Extract it. Add wsdl2html-*.jar to your project, e.g. a project being developed by Eclipse
+2. Extract it. Add wsdl2html-*.jar to the classpath of which you are going to run a java program. 
 
-3. Also add commons-io-xxx.jar and commons-lang-xxx.jar to your project
+3. Also add commons-io-xxx.jar and commons-lang-xxx.jar to the classpath
 
 4. Generate HTML specs by running the main program: 
 org.jaxws.wsdl2html.ui.Wsdl2HtmlMain     _yourWsdlUrl_ 
