@@ -107,7 +107,14 @@
 													</td>
 												</#if>
 												<td class="no_color"/>		
-												<td align="left" class="color">${elementType(stub.type.name)}</td>
+												<td align="left" class="color">
+													<#noescape>														
+														<#assign stubTypeName>
+															${elementType(stub.type.name)}
+														</#assign>
+														${stubTypeName}
+													</#noescape>	
+												</td>
 												<td class="no_color"/>		
 												<td align="left" class="color">${stub.required?string("Y","")}</td>
 												<td class="no_color"/>		
