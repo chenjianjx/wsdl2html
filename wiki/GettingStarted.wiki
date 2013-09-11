@@ -1,6 +1,6 @@
 1. [http://code.google.com/p/wsdl2html/downloads/list Download] it
 
-2. Extract it. Add wsdl2html-*.jar to the classpath of which you are going to run a java program. 
+2. Extract it. Add wsdl2html-xxx.jar to the classpath of which you are going to run a java program. 
 
 3. Also add commons-io-1.4.jar, commons-lang-2.4.jar and freemarker-2.3.16 to the classpath
 
