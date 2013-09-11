@@ -2,7 +2,7 @@
 
 2. Extract it. Add wsdl2html-*.jar to the classpath of which you are going to run a java program. 
 
-3. Also add commons-io-xxx.jar and commons-lang-xxx.jar to the classpath
+3. Also add commons-io-1.4.jar, commons-lang-2.4.jar and freemarker-2.3.16 to the classpath
 
 4. Generate HTML specs by running the main program: 
 *{{{org.jaxws.wsdl2html.ui.Wsdl2HtmlMain     wsdlUrl  [outputDir]}}}*
