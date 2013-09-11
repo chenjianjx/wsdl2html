@@ -5,7 +5,7 @@
 3. Also add commons-io-xxx.jar and commons-lang-xxx.jar to the classpath
 
 4. Generate HTML specs by running the main program: 
-{{{org.jaxws.wsdl2html.ui.Wsdl2HtmlMain     wsdlUrl  [outputDir]}}}
+*{{{org.jaxws.wsdl2html.ui.Wsdl2HtmlMain     wsdlUrl  [outputDir]}}}*
 
 
 5. To Generate HTML specs from jax-ws stubs, run the main program:  {{{org.jaxws.stub2html.ui.Stub2HtmlSimpleMain}}} , with your web service stub as its argument. 
