@@ -10,4 +10,4 @@ __Sometimes as a developer you haven't got the WSDL ready.__ Instead you've just
 
 But you still want a HTML spec right away. In this case you can still use __wsdl2html__ to __generate a readable HTML page from jax-ws stubs__
 
-Download it and have fun.
+[Download](/wsdl2html/dist/main/wsdl2html-1.0.3.jar) it and have fun.
