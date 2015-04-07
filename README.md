@@ -1,4 +1,4 @@
-__You've made a web service or sombody has given you a WSDL. So what are the input and output?__ Check the WSDL? No, that's not readable. Instead you can use __wsdl2html__ to __generate a readable HTML page from a WSDL url__ 
+__You've made a web service or sombody has given you a WSDL. So what are the input and output?__ Check the WSDL? No, that's not readable. Instead you can use __wsdl2html__ to __generate a readable HTML page from a WSDL url, such as: __ 
 
 ![Alt html-table](/wsdl2html/doc/image/generated-place-order.png?raw=true)
 
