@@ -74,7 +74,7 @@ To generate html from stub classes, check [Wsdl2HtmlITCase](src/test/java/org/ja
 		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory
 				.createWebServiceStubSet(webServiceClass);
 
-		WebServiceDisplayEngine displayEngine = createEngine(
+		WebServiceDisplayEngine displayEngine = org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine.createEngine(
 				new SimpleJavaNameDisplayStrategy(),
 				/* you can use your own template here. this is a classpath */
 				"/service.ftl");
