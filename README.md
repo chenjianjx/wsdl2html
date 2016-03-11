@@ -59,5 +59,31 @@ In your pom.xml, add the following:
 ````
 //if you call this method in your code, make sure the jdk version you used to run your code is no lower than that of the jdk used  by your "wsimport" to run in shell
 
-String html = org.jaxws.wsdl2html.service.generateHtml(wsdlUrl); 
+String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
 ````  
+
+
+To generate html from stub classes,
+
+```
+		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory
+				.createWebServiceStubSet(webServiceClass);
+
+		File outputDir = new File("output/" + System.currentTimeMillis());
+		outputDir.mkdirs();
+
+		WebServiceDisplayEngine displayEngine = createEngine(
+				new SimpleJavaNameDisplayStrategy(),
+
+				/* you can use your own template here. this is a classpath */
+				"/service.ftl");
+
+		String html = displayEngine.displayWebSerivce(serviceStubSet);
+		File outputFile = new File(outputDir, "report.html");
+		FileUtils.writeStringToFile(outputFile, html);
+
+		System.out.println("Please find the HTML files at "
+				+ outputFile.getAbsolutePath());
+
+```
+```
