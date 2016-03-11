@@ -1,7 +1,5 @@
 package org.jaxws.wsdl2bytecodes.service;
 
-import static org.apache.commons.lang.ClassUtils.getPackageName;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,8 +23,7 @@ import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
  * 
  */
 public class Wsdl2ByteCodes {
-	
- 
+
 	public static ByteCodePackage generate(String byteCodesDirParent,
 			String wsdlUrl) throws WsdlImportException {
 		String currentTime = formatDate(new Date(), "yyyyMMddHHmmssSSS");
@@ -103,12 +100,9 @@ public class Wsdl2ByteCodes {
 		InputStream inputStream = null;
 		FileOutputStream outputStream = null;
 		try {
-
-			String packageName = getPackageName(Wsdl2ByteCodes.class);
-			String defaultJaxbFile = StringUtils.replace(packageName, ".", "/")
-					+ "/default-jaxb.xml";
-			inputStream = Thread.currentThread().getContextClassLoader()
-					.getResourceAsStream(defaultJaxbFile);
+			String defaultJaxbClasspath = "/default-jaxb.xml";
+			inputStream = Wsdl2ByteCodes.class
+					.getResourceAsStream(defaultJaxbClasspath);
 			outputStream = new FileOutputStream(generatedJaxbFile);
 			IOUtils.copy(inputStream, outputStream);
 		} catch (IOException e) {

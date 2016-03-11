@@ -43,8 +43,8 @@ public class Wsdl2HtmlITCase {
 		WebServiceDisplayEngine displayEngine = createEngine(
 				new SimpleJavaNameDisplayStrategy(),
 
-				/* you can use your own template here */
-				"/org/jaxws/stub2html/view/freemarker/service.ftl");
+				/* you can use your own template here. this is a classpath */
+				"/service.ftl");
 
 		String html = displayEngine.displayWebSerivce(serviceStubSet);
 		File outputFile = new File(outputDir, "report.html");
@@ -83,12 +83,13 @@ public class Wsdl2HtmlITCase {
 	public void formWsdl() throws Exception {
 		Endpoint.publish("http://localhost:9999/ws/order",
 				new OrderSOAPServiceTestImpl());
-		String wsdlUrl = "http://localhost:9999/ws/order?wsdl";		
-		System.out.println("Generating from " + wsdlUrl);		
-		String html = Wsdl2Html.generateHtml(wsdlUrl);		
+		String wsdlUrl = "http://localhost:9999/ws/order?wsdl";
+		System.out.println("Generating from " + wsdlUrl);
+		String html = Wsdl2Html.generateHtml(wsdlUrl);
 		File htmlDir = new File("output" + System.currentTimeMillis());
 		FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
-		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
+		System.out.println("Please find the HTML files at "
+				+ htmlDir.getAbsolutePath());
 	}
 
 	@WebService(endpointInterface = "org.jaxws.integrationtest.exampleWebService.OrderSOAPService")
@@ -111,6 +112,11 @@ public class Wsdl2HtmlITCase {
 
 		}
 
+	}
+
+	public static void main(String[] args) {
+		Endpoint.publish("http://localhost:9999/ws/order",
+				new OrderSOAPServiceTestImpl());
 	}
 
 }
