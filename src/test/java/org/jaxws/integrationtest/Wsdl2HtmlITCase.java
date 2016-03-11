@@ -17,10 +17,8 @@ import org.jaxws.stub2html.model.WebServiceStubSet;
 import org.jaxws.stub2html.service.WebServiceStubSetFactory;
 import org.jaxws.stub2html.view.WebMethodDisplayEngine;
 import org.jaxws.stub2html.view.WebServiceDisplayEngine;
-import org.jaxws.stub2html.view.freemarker.FreemarkerWebServiceDisplayEngine;
 import org.jaxws.stub2html.view.simple.SimpleJavaNameDisplayStrategy;
 import org.jaxws.stub2html.view.simple.SimpleWebMethodDisplayEngine;
-import org.jaxws.wsdl2bytecodes.service.Wsdl2ByteCodes.DeclarationCollisionException;
 import org.jaxws.wsdl2html.service.Wsdl2Html;
 import org.junit.Test;
 

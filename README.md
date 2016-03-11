@@ -17,23 +17,25 @@ But you still want a HTML spec right away. In this case you can still use __wsdl
 
 ## Run as a command line tool
 
-````
+```shell
+
 mvn package 
 cp target 
 unzip target/wsdl2html-some-version-jarset.zip -d /path/to/your/dir
 
 # Go to the direction of extraction and you will see an executable file. Run it like, 
 
-./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory
+./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  # or wsdl2html.bat for windows
 
-````
+```
 
 
 ## Run it inside your application
 
 In your pom.xml, add the following: 
 
-````
+```xml
+
 	<repositories>
 		<repository>
 			<id>jitpack.io</id>
@@ -52,20 +54,23 @@ In your pom.xml, add the following:
 		...
 	</dependencies>	
 
-````
+```
 
 
 
-````
-//if you call this method in your code, make sure the jdk version you used to run your code is no lower than that of the jdk used  by your "wsimport" to run in shell
+```java
+
+//if you call this method in your code, make sure the jdk version you used to run your code is 
+// no lower than that of the jdk used  by your "wsimport" to run in shell
 
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
-````  
+```  
 
 
-To generate html from stub classes,
+To generate html from stub classes, check [Wsdl2HtmlITCase](src/test/java/org/jaxws/integrationtest/Wsdl2HtmlITCase.java)
 
-```
+```java
+
 		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory
 				.createWebServiceStubSet(webServiceClass);
 
@@ -85,5 +90,4 @@ To generate html from stub classes,
 		System.out.println("Please find the HTML files at "
 				+ outputFile.getAbsolutePath());
 
-```
 ```
