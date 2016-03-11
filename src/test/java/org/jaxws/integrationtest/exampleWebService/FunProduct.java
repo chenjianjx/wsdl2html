@@ -1,4 +1,6 @@
-package org.jaxws.stub2html.exampleWebService;
+package org.jaxws.integrationtest.exampleWebService;
+
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -9,15 +11,13 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * 
  * @author chenjianjx
- * 
+ *
  */
-@SuppressWarnings("unused")
-@XmlType(name = "product")
+@XmlType(name = "fun-profuct")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlSeeAlso({FunProduct.class, NotFunProduct.class})
-public abstract class Product {
+@XmlSeeAlso({CommonFunProduct.class, ExtremelyFunProduct.class})
+public class FunProduct extends Product{
 
-	@XmlElement(name = "product-name", required = true)
-	private String productName;
-
+	@XmlElement(name = "get-fun-date", required = true)
+	private Date getFunDate;
 }

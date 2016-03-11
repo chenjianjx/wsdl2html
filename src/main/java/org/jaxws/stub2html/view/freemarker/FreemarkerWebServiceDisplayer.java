@@ -85,13 +85,15 @@ public class FreemarkerWebServiceDisplayer {
 
 	private final class DisplayElementTypeMethodModel implements TemplateMethodModel {
 
-		@SuppressWarnings("rawtypes")
-		@Override
 		public Object exec(List arguments) throws TemplateModelException {
+
 			String className = (String) arguments.get(0);
 			Class<?> clazz = toClass(className);
 			return nameDisplayingStrategy.displayElementType(clazz);
+		
 		}
+
+ 
 
 	}
 

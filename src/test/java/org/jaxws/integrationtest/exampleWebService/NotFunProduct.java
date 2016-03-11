@@ -1,4 +1,4 @@
-package org.jaxws.stub2html.exampleWebService;
+package org.jaxws.integrationtest.exampleWebService;
 
 import java.util.Date;
 

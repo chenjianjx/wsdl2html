@@ -1,10 +1,9 @@
-package org.jaxws.stub2html.exampleWebService;
-
-import java.util.List;
+package org.jaxws.integrationtest.exampleWebService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -13,14 +12,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @SuppressWarnings("unused")
-@XmlType(name = "order")
+@XmlType(name = "product")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Order {
+@XmlSeeAlso({FunProduct.class, NotFunProduct.class})
+public abstract class Product {
 
-	@XmlElement(name = "order-id")
-	private Integer orderId;
-
-	@XmlElement(name = "products", required = true)
-	private List<Product> products;
+	@XmlElement(name = "product-name", required = true)
+	private String productName;
 
 }
