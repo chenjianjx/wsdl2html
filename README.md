@@ -20,7 +20,7 @@ But you still want a HTML spec right away. In this case you can still use __wsdl
 ```shell
 
 mvn package 
-cp target 
+cd target 
 unzip target/wsdl2html-some-version-jarset.zip -d /path/to/your/dir
 
 # Go to the direction of extraction and you will see an executable file. Run it like, 
