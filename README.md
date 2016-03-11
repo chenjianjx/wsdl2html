@@ -74,20 +74,11 @@ To generate html from stub classes, check [Wsdl2HtmlITCase](src/test/java/org/ja
 		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory
 				.createWebServiceStubSet(webServiceClass);
 
-		File outputDir = new File("output/" + System.currentTimeMillis());
-		outputDir.mkdirs();
-
 		WebServiceDisplayEngine displayEngine = createEngine(
 				new SimpleJavaNameDisplayStrategy(),
-
 				/* you can use your own template here. this is a classpath */
 				"/service.ftl");
-
+				
 		String html = displayEngine.displayWebSerivce(serviceStubSet);
-		File outputFile = new File(outputDir, "report.html");
-		FileUtils.writeStringToFile(outputFile, html);
-
-		System.out.println("Please find the HTML files at "
-				+ outputFile.getAbsolutePath());
 
 ```
