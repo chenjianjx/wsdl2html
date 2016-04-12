@@ -1,1 +1,2 @@
-java -cp bin -classpath jars/commons-io-2.4.jar;jars/h2-1.3.175.jar;jars/kent-oald-1.0-SNAPSHOT.jar  -Xmx128m org.jaxws.wsdl2html.ui.Wsdl2HtmlMain $*  
+@echo off
+java -classpath  "jars/*"  -Xmx128m org.jaxws.wsdl2html.ui.Wsdl2HtmlMain %*  
