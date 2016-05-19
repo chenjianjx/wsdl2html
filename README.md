@@ -5,7 +5,7 @@ __You've made a web service or sombody has given you a WSDL. So what are the inp
 ![Alt html-table](/doc/image/generated-place-order.png?raw=true)
 
 
-See? You will love it!  Here is a [colorful version](/doc/single-file.html). 
+See? You will love it!  Here is a [colorful version](https://rawgit.com/chenjianjx/wsdl2html/master/doc/single-file.html). 
 
 __Sometimes as a developer you haven't got the WSDL ready.__ Instead you've just finished the jax-ws stubs:
 
