@@ -40,11 +40,15 @@ public class GenericsUtils {
 	static Class<?> digFromGenericType(Type genericType) {
 		Type[] typeArguments = ((ParameterizedType) genericType).getActualTypeArguments();
 		Type type = typeArguments[0];
-		if(type instanceof ParameterizedType){
+		if (type instanceof ParameterizedType) {
 			return digFromGenericType(type);
-		}else{
+		}
+		
+		if (type instanceof Class){
 			return (Class<?>) type;
 		}
 		
+		return Object.class;
+
 	}
 }
