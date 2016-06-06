@@ -1,7 +1,7 @@
 package org.jaxws.stub2html.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * A tree-like structure indicating the inheritance of java classes involved in
@@ -20,7 +20,7 @@ public class StubTypeTree {
 
 	private Class<?> type;
 
-	private List<StubTypeTree> children = new ArrayList<StubTypeTree>();
+	private Set<StubTypeTree> children = new LinkedHashSet<StubTypeTree>();
 
 	private StubTypeTree parent;
 
@@ -32,7 +32,7 @@ public class StubTypeTree {
 		this.type = type;
 	}
 
-	public List<StubTypeTree> getChildren() {
+	public Set<StubTypeTree> getChildren() {
 		return children;
 	}
 
@@ -48,4 +48,33 @@ public class StubTypeTree {
 		this.parent = parent;
 		parent.addChild(this);
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StubTypeTree other = (StubTypeTree) obj;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+	
+	
+	
+	
 }
