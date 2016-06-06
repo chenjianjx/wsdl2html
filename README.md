@@ -49,7 +49,7 @@ In your pom.xml, add the following:
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
-			<version>2.0</version>
+			<version>2.0.2</version>
 		</dependency>
 		...
 	</dependencies>	
