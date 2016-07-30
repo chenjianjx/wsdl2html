@@ -1,36 +1,32 @@
-		<#macro stubChildrenAsTable stub inheritanceInvolved>	
+		<#macro stubChildrenAsTable stub>	
 			<#if (stub.childStubs??  && (stub.childStubs?size > 0)) >
 				<table class="table table-condensed table-bordered model-rows-table">																								
 					<tr>
 						<th>Property</th>
 						<th>Type</th>						
-						<th>Required</th>
-						<th>Multiple</th>
+						<th>Required</th>					 
 					</tr>
 					<#list stub.childStubs as childStub>									
-						<@stubRow stub=childStub indence=0 inheritanceInvolved=inheritanceInvolved/>
+						<@stubRow stub=childStub parentPath=""/>
 					</#list>											 	
 				</table>
 			</#if>											
 		</#macro>					
 		
-		<#macro stubRow stub indence inheritanceInvolved>			 	
+		<#macro stubRow stub parentPath>			 	
 					<tr>
 						<td>
-							<#list 0..indence as i>
-							  	&nbsp;&nbsp;&nbsp;&nbsp;
-							</#list>  
-							${elementName(stub.stubName)}
+							${stubOgnl(stub, parentPath)}
 						</td>						
 						 		
 						<td>
-							${elementType(stub.type.name)}
+							${stubType(stub)}
 						</td>
 						 		
 						<td>${stub.required?string("Y","N")}</td>				  		
-						<td>${stub.multiOccurs?string("Y","N")}</td>																								
+						 																					
 					</tr>								 
 					<#list stub.childStubs as childStub>									
-						<@stubRow stub=childStub indence=indence+1 inheritanceInvolved=inheritanceInvolved/>
+						<@stubRow stub=childStub parentPath=stubOgnl(stub, parentPath)/>
 					</#list>			 										
 		</#macro>  		 							

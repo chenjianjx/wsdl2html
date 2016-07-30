@@ -60,7 +60,7 @@
 		
 			
 		<title>
-			${className(service.webServiceClass.name)}
+			${className(service.webServiceClass)}
 		</title>
 	
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -73,7 +73,7 @@
 		<body>
 		
 		<div class="container">
-			<h1>${className(service.webServiceClass.name)}</h1>		
+			<h1>${className(service.webServiceClass)}</h1>		
 			 			
 			<h2>Operations</h2>		
 			<#include "include/methodsSummary.ftl"/>

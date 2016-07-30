@@ -10,7 +10,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine;
 import org.jaxws.stub2html.view.freemarker.FreemarkerWebServiceDisplayEngine;
-import org.jaxws.stub2html.view.simple.SimpleJavaNameDisplayStrategy;
 import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
 import org.jaxws.wsdl2html.service.Wsdl2Html;
 
@@ -20,7 +19,6 @@ import org.jaxws.wsdl2html.service.Wsdl2Html;
  * 
  */
 public class Wsdl2HtmlMain {
-
 
 	public static void main(String[] args) throws IOException, WsdlImportException {
 
@@ -45,7 +43,7 @@ public class Wsdl2HtmlMain {
 		System.out.println("Generating from " + wsdlUrl);
 
 		FreemarkerWebServiceDisplayEngine displayEngine = createDisplayEngine(argList);
-		String html  = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine);		 
+		String html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine);
 		FileUtils.writeStringToFile(new File(htmlDir, "report-" + getUniqueNumber() + ".html"), html);
 		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
 	}
@@ -55,7 +53,7 @@ public class Wsdl2HtmlMain {
 	}
 
 	private static FreemarkerWebServiceDisplayEngine createDisplayEngine(List<String> argList) {
-		FreemarkerWebServiceDisplayEngine displayEngine =  ClasspathFreemarkerWebServiceDisplayEngine.createEngine(new SimpleJavaNameDisplayStrategy());		 
+		FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine();
 		return displayEngine;
 	}
 

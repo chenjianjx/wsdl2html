@@ -16,13 +16,9 @@ import org.jaxws.integrationtest.exampleWebService.SinglePostResponse;
 import org.jaxws.integrationtest.exampleWebService.UpdatePostRequest;
 import org.jaxws.integrationtest.exampleWebService.VoidResponse;
 import org.jaxws.integrationtest.exampleWebService.deprecated.OrderPort;
-import org.jaxws.stub2html.model.WebMethodStubSet;
 import org.jaxws.stub2html.model.WebServiceStubSet;
 import org.jaxws.stub2html.service.WebServiceStubSetFactory;
-import org.jaxws.stub2html.view.WebMethodDisplayEngine;
 import org.jaxws.stub2html.view.WebServiceDisplayEngine;
-import org.jaxws.stub2html.view.simple.SimpleJavaNameDisplayStrategy;
-import org.jaxws.stub2html.view.simple.SimpleWebMethodDisplayEngine;
 import org.jaxws.wsdl2html.service.Wsdl2Html;
 import org.junit.Test;
 
@@ -41,8 +37,7 @@ public class Wsdl2HtmlITCase {
 		File outputDir = new File("output/" + System.currentTimeMillis());
 		outputDir.mkdirs();
 
-		WebServiceDisplayEngine displayEngine = createEngine(new SimpleJavaNameDisplayStrategy(),
-
+		WebServiceDisplayEngine displayEngine = createEngine(
 		/* you can use your own template here. this is a classpath */
 		"/service.ftl");
 
@@ -52,25 +47,6 @@ public class Wsdl2HtmlITCase {
 
 		System.out.println("Please find the HTML files at " + outputFile.getAbsolutePath());
 
-	}
-
-	@Test
-	public void fromStubTest_OneMethodOneFile() throws IOException {
-		Class<?> webServiceClass = OrderPort.class;
-		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
-
-		File outputDir = new File("output/" + System.currentTimeMillis());
-		outputDir.mkdirs();
-
-		for (WebMethodStubSet methodStubSet : serviceStubSet.getMethodStubs()) {
-			System.out.println("Converting method " + methodStubSet.getMethodName());
-			WebMethodDisplayEngine display = new SimpleWebMethodDisplayEngine(new SimpleJavaNameDisplayStrategy());
-			String html = display.displayWebMethod(methodStubSet);
-			File outputFile = new File(outputDir, methodStubSet.getMethodName() + ".html");
-			FileUtils.writeStringToFile(outputFile, html);
-		}
-
-		System.out.println("Please find the HTML files at " + outputDir.getAbsolutePath());
 	}
 
 	@Test
