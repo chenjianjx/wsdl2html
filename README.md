@@ -6,7 +6,7 @@ Example:
 
 ![v3-sample](doc/image/v3-sample.png)
 
-Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/sample/BbsWebService.html). 
+Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sample/BbsWebService.html). 
 
 
 # How to run
