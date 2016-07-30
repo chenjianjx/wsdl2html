@@ -29,6 +29,8 @@ public class Stub {
 
 	private boolean multiOccurs;
 
+	private boolean header;
+
 	/**
 	 * Child elements, such as {orderId, orderDate}
 	 */
@@ -64,6 +66,14 @@ public class Stub {
 
 	}
 
+	public boolean isHeader() {
+		return header;
+	}
+
+	public void setHeader(boolean header) {
+		this.header = header;
+	}
+
 	public Class<?> getType() {
 		return type;
 	}
@@ -86,6 +96,13 @@ public class Stub {
 
 	public void setMultiOccurs(boolean multiOccurs) {
 		this.multiOccurs = multiOccurs;
+	}
+
+	public String getDescription() {
+		if (this.header) {
+			return "In header";
+		}
+		return null;
 	}
 
 	@Override

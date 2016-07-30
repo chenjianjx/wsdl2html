@@ -1,11 +1,10 @@
 package org.jaxws.integrationtest.exampleWebService;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -13,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
  * @author chenjianjx
  *
  */
-@XmlType(name = "fun-profuct")
+@XmlType
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlSeeAlso({CommonFunProduct.class, ExtremelyFunProduct.class})
-public class FunProduct extends Product{
+public class PostListResponse extends AbstractResponse {
+	@XmlElement(required = false)
+	private List<Post> posts;
 
-	@XmlElement(name = "get-fun-date", required = true)
-	private Date getFunDate;
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
 }

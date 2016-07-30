@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>wsdl2html</artifactId>
-	<version>2.0.2</version>
+	<version>3.0.0</version>
 	<name>convert wsdl xml to readable html doc</name>
 
 
@@ -12,6 +12,7 @@
 		<junit.version>4.9</junit.version>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	 
 	</properties>
 	<build>
 		<plugins>
@@ -30,18 +31,6 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 
 			<plugin>

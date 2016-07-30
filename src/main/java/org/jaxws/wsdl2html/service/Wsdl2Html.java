@@ -10,7 +10,6 @@ import org.jaxws.stub2html.service.WebServiceStubSetFactory;
 import org.jaxws.stub2html.view.WebServiceDisplayEngine;
 import org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine;
 import org.jaxws.stub2html.view.freemarker.FreemarkerWebServiceDisplayEngine;
-import org.jaxws.stub2html.view.simple.SimpleJavaNameDisplayStrategy;
 import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
 import org.jaxws.wsdl2bytecodes.service.Wsdl2ByteCodes;
 import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
@@ -40,7 +39,7 @@ public class Wsdl2Html {
 	 * @throws WsdlImportException
 	 */
 	public static String generateHtml(String wsdlUrl) throws WsdlImportException{
-		FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine(new SimpleJavaNameDisplayStrategy());
+		FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine();
 		String byteCodesDirParent = System.getProperty("java.io.tmpdir") + "/wsdl2html";
 		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine);
 	}

@@ -32,7 +32,7 @@ public class ClassNameUtils {
 	}
 
 	/**
-	 * com.sun.Hello => Hello.java
+	 * com.sun.Hello => Hello.class
 	 * 
 	 * @param className
 	 * @return

@@ -2,19 +2,15 @@ package org.jaxws.integrationtest.exampleWebService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
  * @author chenjianjx
- * 
+ *
  */
-
-@XmlType(name = "extremely-fun-profuct")
+@XmlType
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ExtremelyFunProduct extends FunProduct{
+public class VoidResponse extends AbstractResponse {
 
-	@XmlElement(name = "extreme-programmer", required = true)
-	private String extremeProgrammer;
 }

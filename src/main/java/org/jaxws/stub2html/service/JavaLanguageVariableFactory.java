@@ -1,7 +1,6 @@
 package org.jaxws.stub2html.service;
 
 import static org.jaxws.stub2html.util.MyClassUtils.isClassArrayOrCollection;
-import static org.jaxws.util.lang.NameConversionUtils.camelToHyphen;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -15,7 +14,6 @@ import javax.xml.bind.annotation.XmlElement;
 
 import org.jaxws.stub2html.model.JavaLanguageVariable;
 import org.jaxws.stub2html.util.GenericsUtils;
-import org.jaxws.util.lang.NameConversionUtils;
 
 /**
  * 
@@ -44,7 +42,7 @@ public class JavaLanguageVariableFactory {
 	}
 
 	private static String getElementName(Field field) {
-		return camelToHyphen(field.getName());	 
+		return field.getName();	 
 	}
 
 	private static String getVariableName(Field field, XmlElement annotation) {
@@ -88,6 +86,7 @@ public class JavaLanguageVariableFactory {
 		variable.setType(GenericsUtils.getMethodGenericReturnType(method));
 		variable.setVariableName(webResultAnnotation.name());
 		variable.setRequired(true);
+		variable.setHeader(webResultAnnotation.header());
 		Class<?> resultClass = method.getReturnType();
 		variable.setMultiOccurs(isClassArrayOrCollection(resultClass));
 		return variable;
@@ -99,6 +98,7 @@ public class JavaLanguageVariableFactory {
 		variable.setType(GenericsUtils.getMethodGenericParameterTypes(method, paramIndex));
 		variable.setVariableName(xmlAnnotation.name());
 		variable.setRequired(true);
+		variable.setHeader(xmlAnnotation.header());
 		Class<?> paramClass = method.getParameterTypes()[paramIndex];
 		variable.setMultiOccurs(isClassArrayOrCollection(paramClass));
 		return variable;

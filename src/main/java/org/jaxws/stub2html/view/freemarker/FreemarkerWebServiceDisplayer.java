@@ -6,13 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+import org.jaxws.stub2html.model.Stub;
 import org.jaxws.stub2html.model.WebServiceStubSet;
-import org.jaxws.stub2html.view.JavaNameDisplayStrategy;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateMethodModel;
+import freemarker.template.TemplateMethodModelEx;
+import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
+import freemarker.template.utility.DeepUnwrap;
 
 /**
  * 
@@ -23,11 +26,10 @@ public class FreemarkerWebServiceDisplayer {
 
 	private final Template template;
 	private final WebServiceStubSet serviceStubSet;
-	private final JavaNameDisplayStrategy nameDisplayingStrategy;
 
-	FreemarkerWebServiceDisplayer(Template template, JavaNameDisplayStrategy nameDisplayingStrategy, WebServiceStubSet serviceStubSet) {
+	FreemarkerWebServiceDisplayer(Template template, WebServiceStubSet serviceStubSet) {
 		this.template = template;
-		this.nameDisplayingStrategy = nameDisplayingStrategy;
+
 		this.serviceStubSet = serviceStubSet;
 	}
 
@@ -38,9 +40,10 @@ public class FreemarkerWebServiceDisplayer {
 			Map<String, Object> rootMap = new HashMap<String, Object>();
 			rootMap.put("service", serviceStubSet);
 
-			rootMap.put("elementType", new DisplayElementTypeMethodModel());
-			rootMap.put("elementName", new DisplayElementNameMethodModel());
-			rootMap.put("className", new DisplayReadableClassNameMethodModel());
+			rootMap.put("stubName", new DisplayStubNameMethodModel());
+			rootMap.put("stubOgnl", new DisplayStubOgnlPathMethodModel());
+			rootMap.put("stubType", new DisplayStubTypeMethodModel());
+			rootMap.put("className", new DisplayClassNameMethodModel());
 
 			StringWriter out = new StringWriter();
 			template.process(rootMap, out);
@@ -54,73 +57,64 @@ public class FreemarkerWebServiceDisplayer {
 
 	}
 
-	private Class<?> toClass(String className) {
-		if (className.equals("byte"))
-			return byte.class;
-		if (className.equals("short"))
-			return short.class;
-		if (className.equals("int"))
-			return int.class;
-		if (className.equals("long"))
-			return long.class;
-		if (className.equals("char"))
-			return char.class;
-		if (className.equals("float"))
-			return float.class;
-		if (className.equals("double"))
-			return double.class;
-		if (className.equals("boolean"))
-			return boolean.class;
-		if (className.equals("void"))
-			return void.class;
-
-		try {
-			return serviceStubSet.getWebServiceClass().getClassLoader().loadClass(className);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Cannot generate html for type " + className + ". Will use '" + "UnkownType' instead");
-			return UnkownType.class;
-		}
-	}
-
-	private final class DisplayElementTypeMethodModel implements TemplateMethodModel {
-
-		public Object exec(List arguments) throws TemplateModelException {
-
-			String className = (String) arguments.get(0);
-			Class<?> clazz = toClass(className);
-			return nameDisplayingStrategy.displayElementType(clazz);
-		
-		}
-
- 
-
-	}
-
-	private final class DisplayElementNameMethodModel implements TemplateMethodModel {
+	private final class DisplayStubOgnlPathMethodModel implements TemplateMethodModelEx {
 
 		@SuppressWarnings("rawtypes")
 		@Override
 		public Object exec(List arguments) throws TemplateModelException {
-			return nameDisplayingStrategy.displayElementName((String) arguments.get(0));
+			Stub stub = (Stub) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
+			String parentPath = (String) DeepUnwrap.unwrap((TemplateModel) arguments.get(1));
+			if (parentPath == null || StringUtils.isEmpty(parentPath)) {
+				return getStubNameConsideringMultiple(stub);
+			}
+			return parentPath + "." + getStubNameConsideringMultiple(stub);
 		}
-
 	}
 
-	private final class DisplayReadableClassNameMethodModel implements TemplateMethodModel {
+	private final class DisplayStubNameMethodModel implements TemplateMethodModelEx {
 
 		@SuppressWarnings("rawtypes")
 		@Override
 		public Object exec(List arguments) throws TemplateModelException {
-			String className = (String) arguments.get(0);
-			Class<?> clazz = toClass(className);
-			return nameDisplayingStrategy.displayClassName(clazz);
+			Stub stub = (Stub) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
+			return getStubNameConsideringMultiple(stub);
+		}
+	}
+
+	private final class DisplayClassNameMethodModel implements TemplateMethodModelEx {
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public Object exec(List arguments) throws TemplateModelException {
+			Class<?> clazz = (Class<?>) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
+			return clazz.getSimpleName();
 		}
 
 	}
 
-	private static final class UnkownType {
+	private final class DisplayStubTypeMethodModel implements TemplateMethodModelEx {
 
+		@SuppressWarnings("rawtypes")
+		@Override
+		public Object exec(List arguments) throws TemplateModelException {
+			Stub stub = (Stub) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
+			String typeText = stub.getType().getSimpleName();
+			if (stub.isMultiOccurs()) {
+				typeText += "[]";
+			}
+			return typeText;
+		}
+	}
+
+	private static String getStubNameConsideringMultiple(Stub stub) {
+		if(StringUtils.isEmpty(stub.getStubName())){
+			return "";
+		}
+		if (stub.isMultiOccurs()) {
+			return stub.getStubName() + "[]";
+		} else {
+			return stub.getStubName();
+		}
 	}
 
 }
