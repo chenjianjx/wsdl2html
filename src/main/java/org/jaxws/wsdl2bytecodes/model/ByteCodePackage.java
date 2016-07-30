@@ -48,6 +48,4 @@ public class ByteCodePackage {
 		return "ByteCodePackage [dir=" + dir + ", packageName=" + packageName + "]";
 	}
 
-	
-	
 }

@@ -73,8 +73,5 @@ public class StubTypeTree {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }

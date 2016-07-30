@@ -107,7 +107,7 @@ public class FreemarkerWebServiceDisplayer {
 	}
 
 	private static String getStubNameConsideringMultiple(Stub stub) {
-		if(StringUtils.isEmpty(stub.getStubName())){
+		if (StringUtils.isEmpty(stub.getStubName())) {
 			return "";
 		}
 		if (stub.isMultiOccurs()) {

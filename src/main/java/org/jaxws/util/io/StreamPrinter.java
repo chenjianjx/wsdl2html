@@ -19,8 +19,6 @@ package org.jaxws.util.io;
  * under the License.
  */
 
- 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,44 +28,44 @@ import java.io.PrintWriter;
 
 /**
  * 
- * @author chenjianjx  (Copied from CXF)  
+ * @author chenjianjx (Copied from CXF)
  *
  */
 public class StreamPrinter extends Thread {
-    InputStream is;
-    String msg;
-    OutputStream os;
+	InputStream is;
+	String msg;
+	OutputStream os;
 
-    public StreamPrinter(InputStream stream, String type) {
-        this(stream, type, null);
-    }
+	public StreamPrinter(InputStream stream, String type) {
+		this(stream, type, null);
+	}
 
-    public StreamPrinter(InputStream stream, String type, OutputStream redirect) {
-        is = stream;
-        msg = type;
-        os = redirect;
-    }
+	public StreamPrinter(InputStream stream, String type, OutputStream redirect) {
+		is = stream;
+		msg = type;
+		os = redirect;
+	}
 
-    public void run() {
-        try {
-            PrintWriter pw = null;
-            if (os != null) {
-                pw = new PrintWriter(os);
-            }
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-            String line = br.readLine();
-            while (line != null) {
-                if (pw != null) {
-                    pw.println(msg + " " + line);
-                }
-                line = br.readLine();
-            }
-            if (pw != null) {
-                pw.flush();
-            }
-        } catch (IOException ioe) {
-            throw new RuntimeException(ioe);
-        }
-    }
+	public void run() {
+		try {
+			PrintWriter pw = null;
+			if (os != null) {
+				pw = new PrintWriter(os);
+			}
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String line = br.readLine();
+			while (line != null) {
+				if (pw != null) {
+					pw.println(msg + " " + line);
+				}
+				line = br.readLine();
+			}
+			if (pw != null) {
+				pw.flush();
+			}
+		} catch (IOException ioe) {
+			throw new RuntimeException(ioe);
+		}
+	}
 }

@@ -25,12 +25,20 @@ import org.junit.Test;
  */
 public class Wsdl2HtmlITCase {
 
-	 
-
 	@Test
 	public void formWsdl() throws Exception {
 		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapServiceImpl());
 		String wsdlUrl = "http://localhost:9999/ws/bbs?wsdl";
+		System.out.println("Generating from " + wsdlUrl);
+		String html = Wsdl2Html.generateHtml(wsdlUrl);
+		File htmlDir = new File("output");
+		FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
+		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
+	}
+
+	@Test
+	public void testAws() throws Exception {
+		String wsdlUrl = "http://webservices.amazon.com/AWSECommerceService/2013-08-01/AWSECommerceService.wsdl";
 		System.out.println("Generating from " + wsdlUrl);
 		String html = Wsdl2Html.generateHtml(wsdlUrl);
 		File htmlDir = new File("output");
@@ -92,13 +100,13 @@ public class Wsdl2HtmlITCase {
 		@Override
 		public void empty() {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void refreshToken(String oldToken) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override

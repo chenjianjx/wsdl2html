@@ -40,7 +40,7 @@ public class ByteCodePackageClassLoader extends ClassLoader {
 		File classDir = appendDir(byteCodePackage.getDir(), getRelativeDir(name));
 		String fileName = toSimpleFileName(name);
 		byte[] classData = readFileToBytes(new File(classDir, fileName));
-		clazz =  defineClass(name, classData, 0, classData.length);
+		clazz = defineClass(name, classData, 0, classData.length);
 		return clazz;
 	}
 

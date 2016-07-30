@@ -17,11 +17,9 @@ import org.apache.commons.lang.builder.ToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class NewPostRequest extends SavePostRequest {
 
-
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this,
-				ToStringStyle.MULTI_LINE_STYLE);
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
 	}
 
 }

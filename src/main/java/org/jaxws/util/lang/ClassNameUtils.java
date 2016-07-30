@@ -25,7 +25,7 @@ public class ClassNameUtils {
 	}
 
 	/**
-	 *  com/sun => com.sun
+	 * com/sun => com.sun
 	 */
 	public static String toRelativeDir(String packageName) {
 		return StringUtils.replace(packageName, ".", "/");
@@ -43,7 +43,8 @@ public class ClassNameUtils {
 	}
 
 	/**
-	 *   com/sun =>  com.sun
+	 * com/sun => com.sun
+	 * 
 	 * @param relativeDir
 	 * @return
 	 */

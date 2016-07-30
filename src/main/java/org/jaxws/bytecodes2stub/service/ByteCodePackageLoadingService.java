@@ -21,7 +21,7 @@ import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
  */
 public class ByteCodePackageLoadingService {
 
-	public static List<Class<?>> loadAll(ByteCodePackage byteCodePackage)  {
+	public static List<Class<?>> loadAll(ByteCodePackage byteCodePackage) {
 		List<Class<?>> allClasses = new ArrayList<Class<?>>();
 		ClassLoader classLoader = new ByteCodePackageClassLoader(currentThread().getContextClassLoader(), byteCodePackage);
 		List<String> classNames = getAllClassNames(byteCodePackage);
@@ -32,7 +32,7 @@ public class ByteCodePackageLoadingService {
 		return allClasses;
 	}
 
-	private static Class<?> loadClass(ClassLoader classLoader, String className)  {
+	private static Class<?> loadClass(ClassLoader classLoader, String className) {
 		try {
 			return classLoader.loadClass(className);
 		} catch (ClassNotFoundException e) {
