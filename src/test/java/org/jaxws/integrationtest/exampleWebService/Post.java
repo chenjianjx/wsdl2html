@@ -1,5 +1,8 @@
 package org.jaxws.integrationtest.exampleWebService;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -36,6 +39,15 @@ public class Post {
 	 */
 	@XmlElement(required = true)
 	protected String content;
+
+	/**
+	 * the post's content
+	 */
+	@XmlElement(required = true)
+	protected Date createTime;
+
+	@XmlElement(required = false)
+	protected List<Comment> firstTenComments;
 
 	/**
 	 * can this post be deleted by current user?
@@ -79,6 +91,30 @@ public class Post {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public List<Comment> getFirstTenComments() {
+		return firstTenComments;
+	}
+
+	public void setFirstTenComments(List<Comment> firstTenComments) {
+		this.firstTenComments = firstTenComments;
 	}
 
 	@Override

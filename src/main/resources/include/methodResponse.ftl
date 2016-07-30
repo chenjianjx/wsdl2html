@@ -5,8 +5,10 @@
 									<tbody>
 											<tr>
 												<th>Name</th>																					 
-												<th>Type</th>																					
-												<th>Required</th>		
+												<th>Type</th>		
+												<th>In Header</th>																			
+												<th>Required</th>	
+												<th>Description</th>	
 											 																										
 											</tr>									 
 												<#include "rootStubRow.ftl"/>						 																											

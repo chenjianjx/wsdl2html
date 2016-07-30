@@ -29,6 +29,8 @@ public class Stub {
 	private boolean required;
 
 	private boolean multiOccurs;
+		
+	private boolean header;
 
 	/**
 	 * Child elements, such as {orderId, orderDate}
@@ -63,6 +65,16 @@ public class Stub {
 	public void addChild(Stub e) {
 		childStubs.add(e);
 
+	}
+	
+	
+
+	public boolean isHeader() {
+		return header;
+	}
+
+	public void setHeader(boolean header) {
+		this.header = header;
 	}
 
 	public Class<?> getType() {

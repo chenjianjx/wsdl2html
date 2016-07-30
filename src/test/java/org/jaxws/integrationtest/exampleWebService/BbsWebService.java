@@ -1,5 +1,7 @@
 package org.jaxws.integrationtest.exampleWebService;
 
+import java.util.List;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -15,7 +17,7 @@ import javax.jws.WebService;
 public interface BbsWebService {
 
 	@WebMethod
-	@WebResult(name="result")
+	@WebResult(name = "result")
 	public SinglePostResponse newPost(@WebParam(name = "operatorUserId") Long operatorUserId, @WebParam(name = "request") NewPostRequest request);
 
 	@WebMethod
@@ -25,6 +27,24 @@ public interface BbsWebService {
 	public PostListResponse getAllPosts(@WebParam(name = "operatorUserId") Long operatorUserId);
 
 	@WebMethod
+	public PostListResponse getPostsByIds(@WebParam(name = "operatorUserId") Long operatorUserId, @WebParam(name = "postIds") List<Long> postIds);
+
+	@WebMethod
+	public List<Post> getAllPostsWithoutOverload(@WebParam(name = "operatorUserId") Long operatorUserId);
+
+	@WebMethod
+	public List<Long> getAllPostIdsWithoutOverload(@WebParam(name = "operatorUserId") Long operatorUserId);
+
+	@WebMethod
 	public VoidResponse deletePostById(@WebParam(name = "operatorUserId") Long operatorUserId, @WebParam(name = "postId") Long postId);
 
+	@WebMethod
+	public void empty();
+
+	@WebMethod
+	@WebResult(name = "newToken", header = true)
+	public void refreshToken(@WebParam(name = "oldToken", header = true) String oldToken);
+
+	
+	 
 }

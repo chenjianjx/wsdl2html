@@ -86,6 +86,7 @@ public class JavaLanguageVariableFactory {
 		variable.setType(GenericsUtils.getMethodGenericReturnType(method));
 		variable.setVariableName(webResultAnnotation.name());
 		variable.setRequired(true);
+		variable.setHeader(webResultAnnotation.header());
 		Class<?> resultClass = method.getReturnType();
 		variable.setMultiOccurs(isClassArrayOrCollection(resultClass));
 		return variable;
@@ -97,6 +98,7 @@ public class JavaLanguageVariableFactory {
 		variable.setType(GenericsUtils.getMethodGenericParameterTypes(method, paramIndex));
 		variable.setVariableName(xmlAnnotation.name());
 		variable.setRequired(true);
+		variable.setHeader(xmlAnnotation.header());
 		Class<?> paramClass = method.getParameterTypes()[paramIndex];
 		variable.setMultiOccurs(isClassArrayOrCollection(paramClass));
 		return variable;

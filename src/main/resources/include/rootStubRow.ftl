@@ -5,7 +5,11 @@
 																<div class="panel-heading">${stubType(stub)}</div>																																					 		
 																<@stubChildrenAsTable stub=stub/>											
 														</div>														  
-													</td>											
+													</td>	
+													<td>
+														${stub.header?string("Y", "N")}</td>
+													</td>										
 													<td>${stub.required?string("Y","N")}</td>
+													<td></td>
 												 
 												</tr>		

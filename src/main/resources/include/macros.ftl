@@ -4,7 +4,8 @@
 					<tr>
 						<th>Property</th>
 						<th>Type</th>						
-						<th>Required</th>					 
+						<th>Required</th>
+						<th>Description</th>						 
 					</tr>
 					<#list stub.childStubs as childStub>									
 						<@stubRow stub=childStub parentPath=""/>
@@ -23,7 +24,9 @@
 							${stubType(stub)}
 						</td>
 						 		
-						<td>${stub.required?string("Y","N")}</td>				  		
+						<td>${stub.required?string("Y","N")}</td>			
+						
+						<td></td>	  		
 						 																					
 					</tr>								 
 					<#list stub.childStubs as childStub>									

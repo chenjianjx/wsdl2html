@@ -19,41 +19,50 @@
 			.summary-table tr td:nth-child(1){
     			width:5%;
 			}
- 
+			.summary-table tr td:nth-child(2){
+    			width:20%;
+			}			
+ 			.summary-table tr td:nth-child(3){
+    			width:20%;
+			}
+ 			.summary-table tr td:nth-child(4){
+    			width:20%;
+			}					
+ 			.summary-table tr td:nth-child(5){
+    			width:35%;
+			}		
 			
 			.stub-table tr td:nth-child(1){
 				width:20%;
 			}
 			.stub-table tr td:nth-child(2){				
-				width:60%;
+				width:50%;
 			}
 			.stub-table tr td:nth-child(3){
 				width:10%;
-			}
+			}			
 			.stub-table tr td:nth-child(4){
+				width:10%;
+			}
+			.stub-table tr td:nth-child(5){
 				width:10%;
 			}													
 						
  	
 			
 			.model-rows-table tr td:nth-child(1){
-				width:40%;
+				width:55%;
 			} 
 			.model-rows-table tr td:nth-child(2){
-				width:5%;
+				width:25%;
 			}		
 			.model-rows-table tr td:nth-child(3){
-				width:40%;
+				width:10%;
 			}		
 			.model-rows-table tr td:nth-child(4){
-				width:5%;
+				width:10%;
 			}		
-			.model-rows-table tr td:nth-child(5){
-				width:5%;
-			}																	
-			.model-rows-table tr td:nth-child(6){
-				width:5%;
-			}					
+			
  						
 			
 		</style>

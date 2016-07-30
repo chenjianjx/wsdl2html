@@ -6,7 +6,9 @@
 											<tr>
 												<th>Name</th>																					 
 												<th>Type</th>																					
-												<th>Required</th>		
+												<th>In Header</th>
+												<th>Required</th>
+												<th>Description</th>		
 										 																									
 											</tr>	
 									<#list method.requestStubs as stub>
