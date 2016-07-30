@@ -6,7 +6,7 @@
 											<tr>
 												<th>Name</th>																					 
 												<th>Type</th>																					
-												<th>In Header</th>
+											 
 												<th>Required</th>
 												<th>Description</th>		
 										 																									

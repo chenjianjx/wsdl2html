@@ -1,17 +1,13 @@
-# Introduction
+# wsdl2html
 
-__You've made a web service or sombody has given you a WSDL. So what are the input and output?__ Check the WSDL? No, that's not readable. Instead you can use __wsdl2html__ to __generate a readable HTML page from a WSDL url, such as__ 
+Converts WSDLs to html documents which are readable by everybody.
 
-![Alt html-table](/doc/image/generated-place-order.png?raw=true)
+Example: 
 
+![v3-sample](doc/image/v3-sample.png)
 
-See? You will love it!  Here is a [colorful version](https://rawgit.com/chenjianjx/wsdl2html/master/doc/single-file.html). 
+Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/sample/BbsWebService.html). 
 
-__Sometimes as a developer you haven't got the WSDL ready.__ Instead you've just finished the jax-ws stubs:
-
-![Alt service](/doc/image/stub-order-soap-service.png?raw=true)
-
-But you still want a HTML spec right away. In this case you can still use __wsdl2html__ to __generate a readable HTML page from jax-ws stubs__
 
 # How to run
 
@@ -49,7 +45,7 @@ In your pom.xml, add the following:
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
-			<version>2.0.2</version>
+			<version>3.0.0</version>
 		</dependency>
 		...
 	</dependencies>	
@@ -61,24 +57,7 @@ In your pom.xml, add the following:
 ```java
 
 //if you call this method in your code, make sure the jdk version you used to run your code is 
-// no lower than that of the jdk used  by your "wsimport" to run in shell
+// no lower than that of the jdk used by your "wsimport" to run in shell
 
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
 ```  
-
-
-To generate html from stub classes, check [Wsdl2HtmlITCase](src/test/java/org/jaxws/integrationtest/Wsdl2HtmlITCase.java)
-
-```java
-
-		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory
-				.createWebServiceStubSet(webServiceClass);
-
-		WebServiceDisplayEngine displayEngine = org.jaxws.stub2html.view.freemarker.ClasspathFreemarkerWebServiceDisplayEngine.createEngine(
-				new SimpleJavaNameDisplayStrategy(),
-				/* you can use your own template here. this is a classpath */
-				"/service.ftl");
-				
-		String html = displayEngine.displayWebSerivce(serviceStubSet);
-
-```

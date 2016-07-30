@@ -36,11 +36,9 @@
 				width:20%;
 			}
 			.stub-table tr td:nth-child(2){				
-				width:50%;
+				width:60%;
 			}
-			.stub-table tr td:nth-child(3){
-				width:10%;
-			}			
+	
 			.stub-table tr td:nth-child(4){
 				width:10%;
 			}

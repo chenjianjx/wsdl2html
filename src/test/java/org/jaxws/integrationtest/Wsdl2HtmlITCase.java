@@ -100,6 +100,12 @@ public class Wsdl2HtmlITCase {
 			// TODO Auto-generated method stub
 			
 		}
+
+		@Override
+		public boolean oldOrEven(int number) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 	}
 
 	public static void main(String[] args) {

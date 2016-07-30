@@ -42,9 +42,10 @@ public interface BbsWebService {
 	public void empty();
 
 	@WebMethod
-	@WebResult(name = "newToken", header = true)
+	public boolean oldOrEven(@WebParam(name = "number") int number);
+
+	@WebMethod
+	@WebResult(name = "newToken")
 	public void refreshToken(@WebParam(name = "oldToken", header = true) String oldToken);
 
-	
-	 
 }

@@ -3,7 +3,6 @@ package org.jaxws.stub2html.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
@@ -29,7 +28,7 @@ public class Stub {
 	private boolean required;
 
 	private boolean multiOccurs;
-		
+
 	private boolean header;
 
 	/**
@@ -66,8 +65,6 @@ public class Stub {
 		childStubs.add(e);
 
 	}
-	
-	
 
 	public boolean isHeader() {
 		return header;
@@ -99,6 +96,13 @@ public class Stub {
 
 	public void setMultiOccurs(boolean multiOccurs) {
 		this.multiOccurs = multiOccurs;
+	}
+
+	public String getDescription() {
+		if (this.header) {
+			return "In header";
+		}
+		return null;
 	}
 
 	@Override
