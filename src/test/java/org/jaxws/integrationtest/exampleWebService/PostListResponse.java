@@ -10,17 +10,20 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * 
  * @author chenjianjx
- * 
+ *
  */
-@SuppressWarnings("unused")
-@XmlType(name = "order")
+@XmlType
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Order {
+public class PostListResponse extends AbstractResponse {
+	@XmlElement(required = false)
+	private List<Post> posts;
 
-	@XmlElement(name = "order-id")
-	private Integer orderId;
+	public List<Post> getPosts() {
+		return posts;
+	}
 
-	@XmlElement(name = "products", required = true)
-	private List<Product> products;
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 
 }

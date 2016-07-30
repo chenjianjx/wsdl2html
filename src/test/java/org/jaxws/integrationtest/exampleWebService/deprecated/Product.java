@@ -1,4 +1,4 @@
-package org.jaxws.integrationtest.exampleWebService;
+package org.jaxws.integrationtest.exampleWebService.deprecated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,13 +11,12 @@ import javax.xml.bind.annotation.XmlType;
  * @author chenjianjx
  * 
  */
-@SuppressWarnings("unused")
 @XmlType(name = "product")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({FunProduct.class, NotFunProduct.class})
 public abstract class Product {
 
-	@XmlElement(name = "product-name", required = true)
+	@XmlElement(required = true)
 	private String productName;
 
 }

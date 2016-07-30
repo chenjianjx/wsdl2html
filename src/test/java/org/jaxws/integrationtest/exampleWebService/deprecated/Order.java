@@ -1,6 +1,6 @@
-package org.jaxws.integrationtest.exampleWebService;
+package org.jaxws.integrationtest.exampleWebService.deprecated;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,15 +8,18 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
+ * 
  * @author chenjianjx
- *
+ * 
  */
-
-@XmlType(name = "not-fun-profuct")
+@XmlType(name = "order")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class NotFunProduct extends Product{
+public class Order {
 
-	
-	@XmlElement(name = "get-not-fun-date", required = true)
-	private Date getNotFunDate;
+	@XmlElement
+	private Integer orderId;
+
+	@XmlElement(required = true)
+	private List<Product> products;
+
 }

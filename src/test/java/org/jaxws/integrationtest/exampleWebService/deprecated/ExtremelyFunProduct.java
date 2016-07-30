@@ -1,4 +1,4 @@
-package org.jaxws.integrationtest.exampleWebService;
+package org.jaxws.integrationtest.exampleWebService.deprecated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
