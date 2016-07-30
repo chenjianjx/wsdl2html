@@ -19,6 +19,7 @@ import freemarker.template.TemplateModelException;
  * @author chenjianjx
  * 
  */
+@SuppressWarnings("deprecation")
 public class FreemarkerWebServiceDisplayer {
 
 	private final Template template;
@@ -85,15 +86,14 @@ public class FreemarkerWebServiceDisplayer {
 
 	private final class DisplayElementTypeMethodModel implements TemplateMethodModel {
 
+		@SuppressWarnings("rawtypes")
 		public Object exec(List arguments) throws TemplateModelException {
 
 			String className = (String) arguments.get(0);
 			Class<?> clazz = toClass(className);
 			return nameDisplayingStrategy.displayElementType(clazz);
-		
-		}
 
- 
+		}
 
 	}
 
@@ -106,6 +106,7 @@ public class FreemarkerWebServiceDisplayer {
 		}
 
 	}
+
 
 	private final class DisplayReadableClassNameMethodModel implements TemplateMethodModel {
 

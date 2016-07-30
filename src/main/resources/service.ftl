@@ -1,206 +1,169 @@
 <#escape x as (x!)?html>
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-	<html>
-		<head>
-			<style type="text/css">
-				body {background-color: rgb(246,246,246); }
-				h1 { color: rgb(0,51,102); font-family: helvetica; font-size: 15pt; font-weight: bold; }
-				h2 { color: rgb(0,51,102); font-family: helvetica; font-size: 13pt; font-weight: bold; }
-				h3 { color: rgb(0,51,102); font-family: helvetica; font-size: 9pt; font-weight: bold; }
-				p { color: rgb(0,51,102); font-family: helvetica; font-size: 10pt; font-weight: normal; }
-				a { color: rgb(0,51,102); font-family: helvetica; font-size: 10pt; font-weight: normal; }
-				a.th { color: rgb(246,246,246); background-color: rgb(102,102,102); font-family: helvetica; font-size: 10pt; font-weight: bold; }
-				p.error { color: rgb(255,0,0); font-family: helvetica; font-size: 10pt; font-weight: normal; }
-				th.color { color: rgb(246,246,246); background-color: rgb(102,102,102); font-family: helvetica; font-size: 10pt; font-weight: bold; }
-				th.no_color { color: rgb(0,51,102); font-family: helvetica; font-size: 10pt; font-weight: bold; }
-				td.color { color: rgb(0,51,102); background-color: rgb(255,225,225); font-family: helvetica; font-size: 10pt; font-weight: normal; }
-				td.color_pre { color: rgb(0,51,102); background-color: rgb(255,225,225); font-family: helvetica; font-size: 10pt; font-weight: normal; white-space: pre }
-				td.no_color { color: rgb(0,51,102); font-family: helvetica; font-size: 10pt; font-weight: normal; }
-				td.no_color_pre { color: rgb(0,51,102); font-family: helvetica; font-size: 10pt; font-weight: normal; white-space: pre }
-				.methodBody {padding-top: 50px}
-			</style>
-		
-			<title>
-				${className(service.webServiceClass.name)}
-			</title>
-		</head>	
-		<body>
-			<h1>${className(service.webServiceClass.name)}</h1>
+
+		<#macro stubRow stub indence inheritanceInvolved>			
+			<tr>
+				<td>
+					<#list 0..indence as i>
+					  	&nbsp;&nbsp;&nbsp;&nbsp;
+					</#list>  
+					${elementName(stub.stubName)}
+				</td>						
+				 		
+				<td>
+					<#noescape>														
+						<#assign stubTypeName>
+							${elementType(stub.type.name)}
+						</#assign>
+						${stubTypeName}
+					</#noescape>	
+				</td>
+				 		
+				<td>${stub.required?string("Y","")}</td>				  		
+				<td>${stub.multiOccurs?string("Y","")}</td>																								
+			</tr>								 
+			<#list stub.childStubs as childStub>									
+				<@stubRow stub=childStub indence=indence+1 inheritanceInvolved=inheritanceInvolved/>
+			</#list>								
 			
-			<table cellspacing="1" cellpadding="1" border="0">
-				<tbody>
-						<tr valign="top">
-							<th align="left" class="color">Index</th>
-							<th class="no_color"/>
-							<th align="left" class="color">Method</th>				
-							<th class="no_color"/>
-							<th align="left" class="color">Request(s)</th>
-							<th class="no_color"/>
-							<th align="left" class="color">Response</th>																											
-						</tr>
-					<#list service.methodStubs as method>						
-						<tr class="no_color">
-							<td/>
-						</tr>					
-						<tr valign="top">
-							<td align="left" class="color"><a href="#method${method_index + 1}">${method_index + 1}</a></td>				
-							<td class="no_color"/>		
-							<td align="left" class="color"><a href="#method${method_index + 1}">${method.methodName}</a></td>
-							<td class="no_color"/>
-							<td align="left" class="color">
-								<#list method.requestStubs as stub>
-									 ${elementName(stub.stubName)}<br/>
-								</#list>
-							
-							</td>
-							<td class="no_color"/>
-							<td align="left" class="color">
-								<#if method.responseStub??>
-									${elementName(method.responseStub.stubName)}
+		</#macro>  		
+
+
+ 							
+		<#macro showModelRows rows>	 
+			<#if (rows?size > 0) >
+				<table class="table table-condensed table-bordered model-rows-table">																								
+					<tr>
+						<th>Property</th>
+						<th>Type</th>
+						<th>Description</th>
+						<th>Format</th>
+						<th>Required</th>
+						<th>ReadOnly</th>
+					</tr>
+					<#list rows as row>
+						<tr>
+							<td>${row.getOgnlPath()}</td>
+							<td>${row.getTypeStr()}</td>
+							<td>${row.getProperty().getDescription()}</td>
+							<td>${row.getProperty().getFormat()}</td>
+							<td>${row.getProperty().getRequired()?string('Y', 'N')}</td>
+							<td>
+								<#if row.getProperty().getReadOnly()??>
+									${row.getProperty().getReadOnly()?string('Y', 'N')}
 								</#if>
-								 
-							</td>								
-						</tr>
+							</td>
+						</tr>										
 					</#list>
-				</tbody>
-			</table>
-		    <#list service.methodStubs as method>		
-		    	<div class="methodBody"> 		    		
-		    		<hr/>		
-					<a name="method${method_index + 1}"><h2>Method #${method_index + 1} ${method.methodName}</h2></a>
-						<#if (method.requestStubs?size > 0)>
-							<h3>Request</h3>
-							<table cellspacing="1" cellpadding="1" border="0">
-								<tbody>
-										<tr valign="top">
-											<th align="left" class="color">Name</th>
-											<th class="no_color"/>
-											<#if method.inheritanceInvolved>
-												<th align="left" class="color">Scope</th>
-												<th class="no_color"/>
-											</#if>	
-											<th align="left" class="color">Type</th>
-											<th class="no_color"/>
-											<th align="left" class="color">Required</th>
-											<th class="no_color"/>
-											<th align="left" class="color">Multiple</th>
-										</tr>
-									
-			
-										<#macro stubRow stub indence inheritanceInvolved>
-											<tr class="no_color">
-												<td/>
-											</tr>					
-											<tr valign="top">
-												<td align="left" class="color">
-													<#list 0..indence as i>
-													  	&nbsp;&nbsp;&nbsp;&nbsp;
-													</#list>  
-													${elementName(stub.stubName)}
-												</td>		
-												<#if inheritanceInvolved>		
-													<td class="no_color"/>		
-													<td align="left" class="color">
-														<#if stub.subTypeOfParentStub??>
-															Only for <b>${className(stub.subTypeOfParentStub.name)}</b>											
-														</#if>
-													</td>
-												</#if>
-												<td class="no_color"/>		
-												<td align="left" class="color">
-													<#noescape>														
-														<#assign stubTypeName>
-															${elementType(stub.type.name)}
-														</#assign>
-														${stubTypeName}
-													</#noescape>	
-												</td>
-												<td class="no_color"/>		
-												<td align="left" class="color">${stub.required?string("Y","")}</td>
-												<td class="no_color"/>		
-												<td align="left" class="color">${stub.multiOccurs?string("Y","")} </td>																								
-											</tr>								 
-											<#list stub.childStubs as childStub>									
-												<@stubRow stub=childStub indence=indence+1 inheritanceInvolved=inheritanceInvolved/>
-											</#list>								
-											
-										</#macro>  		
-										
-										
-										<#list method.requestStubs as s>								 		
-											<@stubRow stub=s indence=0 inheritanceInvolved=method.inheritanceInvolved/>
-										</#list>
-										
-			
-								</tbody>
-							</table>
-						</#if>
-			
-							<#if method.responseStub??>				
-								<h3>Response</h3>
-								<table cellspacing="1" cellpadding="1" border="0">
-									<tbody>
-											<tr valign="top">
-												<th align="left" class="color">Name</th>
-												<th class="no_color"/>
-												<#if method.inheritanceInvolved>
-													<th align="left" class="color">Scope</th>
-													<th class="no_color"/>
-												</#if>	
-												<th align="left" class="color">Type</th>
-												<th class="no_color"/>
-												<th align="left" class="color">Required</th>
-												<th class="no_color"/>
-												<th align="left" class="color">Multiple</th>
-											</tr>
-											<@stubRow stub=method.responseStub indence=0 inheritanceInvolved=method.inheritanceInvolved/>							
-									</tbody>
-								</table>					
-							</#if>
-							
-							<#if method.inheritanceInvolved>
-								<h3>Type Hierarchy</h3>
-								
-								<#macro typeRow typeTree indence>
-											<tr class="no_color">
-												<td/>
-											</tr>					
-											<tr valign="top">
-												<td align="left" class="color">
-													<#list 0..indence as i>
-													  	&nbsp;&nbsp;&nbsp;&nbsp;
-													</#list>  
-													${className(typeTree.type.name)}
-												</td>																								
-											</tr>								 
-											<#list typeTree.children as childTree>									
-												<@typeRow typeTree=childTree indence=indence+1/>
-											</#list>								
-			
-								</#macro>  									
-								
-								<table cellspacing="1" cellpadding="1" border="0">
-									<tbody>									
-											<#list method.stubTypeTreeRepository.allTrees as typeTree>
-												<#if !typeTree.parent??>
-													<tr>								
-														<@typeRow typeTree=typeTree indence=0/>
-													</tr>											
-												</#if>								
+				</table>									
+			</#if>
+		</#macro>  		
+
+
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
 	
-											</#list>
-									</tbody>
-								</table>								
-							</#if>						
-						 
-					</div>				
-			</#list>				
+		<!-- a bootstrap css is mandatory -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
+		
+		<style type="text/css">
+
+		
+			.summary-table tr td:nth-child(1){
+    			width:5%;
+			}
+			.summary-table tr td:nth-child(2){
+    			width:5%;
+			}		
+			.summary-table tr td:nth-child(3){
+    			width:30%;
+			}					
+			.info-table tr td:nth-child(1){
+    			width:15%;
+			}						
+
+			.operation-intro-table tr td:nth-child(1){
+    			width:20%;
+			}			
 			
+			.param-table tr td:nth-child(1){
+				width:10%;
+			}
+			.param-table tr td:nth-child(2){				
+				width:10%;
+			}
+			.param-table tr td:nth-child(3){
+				width:60%;
+			}
+			.param-table tr td:nth-child(4){
+				width:10%;
+			}													
+						
+			.response-table tr td:nth-child(1){
+				width:10%;
+			}			
 			
+			.response-table tr td:nth-child(2){				
+				width:20%;
+			}		
 			
+			.model-rows-table tr td:nth-child(1){
+				width:40%;
+			} 
+			.model-rows-table tr td:nth-child(2){
+				width:5%;
+			}		
+			.model-rows-table tr td:nth-child(3){
+				width:40%;
+			}		
+			.model-rows-table tr td:nth-child(4){
+				width:5%;
+			}		
+			.model-rows-table tr td:nth-child(5){
+				width:5%;
+			}																	
+			.model-rows-table tr td:nth-child(6){
+				width:5%;
+			}					
+ 						
 			
+		</style>
+		
+			
+		<title>
+			${className(service.webServiceClass.name)}
+		</title>
+	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		</head>
+		<body>
+		
+		<div class="container">
+			<h1>${className(service.webServiceClass.name)}</h1>		
+			 			
+			<h2>Operations</h2>		
+			<#include "include/methodsSummary.ftl"/>
+ 
+ 			<#if service.methodStubs??>
+ 				<#list service.methodStubs as method>
+ 					<#include "include/methodDetail.ftl"/>
+ 				</#list>
+ 			</#if>	
+		</div>			
 		</body>
-	</html>  
+	</html>
+
+ 
 </#escape>
 
 
