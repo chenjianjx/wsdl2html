@@ -21,26 +21,20 @@
 			}
  
 			
-			.param-table tr td:nth-child(1){
+			.stub-table tr td:nth-child(1){
 				width:20%;
 			}
-			.param-table tr td:nth-child(2){				
+			.stub-table tr td:nth-child(2){				
 				width:60%;
 			}
-			.param-table tr td:nth-child(3){
+			.stub-table tr td:nth-child(3){
 				width:10%;
 			}
-			.param-table tr td:nth-child(4){
+			.stub-table tr td:nth-child(4){
 				width:10%;
 			}													
 						
-			.response-table tr td:nth-child(1){
-				width:10%;
-			}			
-			
-			.response-table tr td:nth-child(2){				
-				width:20%;
-			}		
+ 	
 			
 			.model-rows-table tr td:nth-child(1){
 				width:40%;

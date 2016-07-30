@@ -5,4 +5,5 @@
 	 					<h4>Parameters</h4>		
 	 					<#include "methodParams.ftl"/>							
 
-						<h4>Response</h4>					 
+						<h4>Response</h4>			
+						<#include "methodResponse.ftl"/>		 

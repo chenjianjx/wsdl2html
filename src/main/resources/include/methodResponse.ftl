@@ -1,31 +1,33 @@
-						<div>				
-							<table class="table table-bordered response-table">
-								<tbody>
-										<tr>
-											<th>HTTP Status Code</th>										
-											<th>Reason</th>	
-											<th>Response Type</th>																																																													
-										</tr>	
-										<#if sw.getOperation(operationId).getResponses()??>
-			 							<#list sw.getOperation(operationId).getResponses()?keys as httpCode>
-			 								
-											<tr>																	
-												<td>${httpCode}</td>
-												<td>${sw.getOperation(operationId).getResponses()[httpCode] .getDescription()}</td>
-												<td>
-													<#if sw.getOperation(operationId).getResponses()[httpCode].getSchema()??>													
-															<div class="panel panel-default">														
-																<div class="panel-heading">${propertyTypeStr(sw.getOperation(operationId).getResponses()[httpCode].getSchema(), opeartionId)}</div>																
-																<@showModelRows rows=propertyToModelRows(sw.getOperation(operationId).getResponses()[httpCode].getSchema(), opeartionId)/>																																								
-															</div>														 
-													</#if>																								
-												</td>											
-											</tr>								 					
-										</#list>
-										</#if>
-									</tr>										
-																				
-								</tbody>						
-													
-							</table>	
-						</div>
+						<#if (method.responseStub??) >
+							<#assign stub = method.responseStub/>			 																	
+							<div>				
+								<table class="table table-bordered stub-table">
+									<tbody>
+											<tr>
+												<th>Name</th>																					 
+												<th>Type</th>																					
+												<th>Required</th>		
+												<th>Multiple</th>																														
+											</tr>	
+								 
+												<tr>																	
+													<td>${elementName(stub.stubName)}</td>												 
+													<td>														 
+														<div class="panel panel-default">
+																<div class="panel-heading">${className(stub.type.name)}</div>																																					 		
+																<@stubChildrenAsTable stub=stub inheritanceInvolved=method.inheritanceInvolved/>											
+														</div>														  
+													</td>											
+													<td>${stub.required?string("Y","N")}</td>
+													<td>${stub.multiOccurs?string("Y","N")}</td>
+												</tr>								 						
+																					
+									</tbody>						
+														
+								</table>		
+							</div>	
+											
+						<#else>
+							No Response
+						</#if>						
+

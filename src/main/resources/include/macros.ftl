@@ -33,35 +33,4 @@
 					<#list stub.childStubs as childStub>									
 						<@stubRow stub=childStub indence=indence+1 inheritanceInvolved=inheritanceInvolved/>
 					</#list>			 										
-		</#macro>  		
-
-
- 							
-		<#macro showModelRows rows>	 
-			<#if (rows?size > 0) >
-				<table class="table table-condensed table-bordered model-rows-table">																								
-					<tr>
-						<th>Property</th>
-						<th>Type</th>
-						<th>Description</th>
-						<th>Format</th>
-						<th>Required</th>
-						<th>ReadOnly</th>
-					</tr>
-					<#list rows as row>
-						<tr>
-							<td>${row.getOgnlPath()}</td>
-							<td>${row.getTypeStr()}</td>
-							<td>${row.getProperty().getDescription()}</td>
-							<td>${row.getProperty().getFormat()}</td>
-							<td>${row.getProperty().getRequired()?string('Y', 'N')}</td>
-							<td>
-								<#if row.getProperty().getReadOnly()??>
-									${row.getProperty().getReadOnly()?string('Y', 'N')}
-								</#if>
-							</td>
-						</tr>										
-					</#list>
-				</table>									
-			</#if>
-		</#macro>  		
+		</#macro>  		 							

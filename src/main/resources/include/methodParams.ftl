@@ -1,7 +1,7 @@
 						<#if (method.requestStubs??  && (method.requestStubs?size > 0)) >
 				 																
 							<div>				
-								<table class="table table-bordered param-table">
+								<table class="table table-bordered stub-table">
 									<tbody>
 											<tr>
 												<th>Name</th>																					 
@@ -21,7 +21,7 @@
 													<td>${stub.required?string("Y","N")}</td>
 													<td>${stub.multiOccurs?string("Y","N")}</td>
 												</tr>								 						
-										</tr>
+									 
 									</#list>												
 																					
 									</tbody>						
