@@ -23,7 +23,7 @@ import org.jaxws.stub2html.model.StubTypeTree;
  */
 public class Variable2Stub {
 
-	public static Stub convertToStub(JavaLanguageVariable variable,StubTypeTreeRepository typeTreeRepository) {
+	public static Stub convertToStub(JavaLanguageVariable variable, StubTypeTreeRepository typeTreeRepository) {
 
 		Stub stub = new Stub();
 		stub.setStubName(variable.getVariableName());
@@ -40,7 +40,8 @@ public class Variable2Stub {
 	}
 
 	private static void convertFieldsToChildStubs(Stub parentStub, Class<?> type, StubTypeTreeRepository typeTreeRepository) {
-		for (Field childField : type.getDeclaredFields()) {
+		List<Field> fields = getFieldsIncludingAncestors(type);
+		for (Field childField : fields) {
 			Stub child = convertToStub(createVariableFromField(childField), typeTreeRepository);
 			parentStub.addChild(child);
 		}
@@ -54,6 +55,30 @@ public class Variable2Stub {
 			}
 		}
 
+	}
+
+	private static List<Field> getFieldsIncludingAncestors(Class<?> type) {
+		List<Field> allFields = new ArrayList<Field>();
+		while (true) {
+			Field[] fieldsArray = type.getDeclaredFields();
+			List<Field> fields = new ArrayList<Field>();
+			if (fieldsArray != null) {
+				for (Field f : fieldsArray) {
+					fields.add(f);
+				}
+			}
+			allFields.addAll(0, fields);
+
+			type = type.getSuperclass();
+			if (type == null) {
+				break;
+			}
+			if (!type.isAnnotationPresent(XmlType.class)) {
+				break;
+			}
+
+		}
+		return allFields;
 	}
 
 	private static LinkedList<FieldsOfSubType> getFieldsOfSubTypes(Class<?> thisType, StubTypeTreeRepository typeTreeRepository) {
@@ -81,7 +106,7 @@ public class Variable2Stub {
 
 	private static void registerToStubTypeTree(Class<?> thisType, StubTypeTreeRepository typeTreeRepository, List<Class<?>> subTypes) {
 		StubTypeTree thisTypeTree = typeTreeRepository.getStubTypeTree(thisType);
-		for (Class<?> subType : subTypes) {			
+		for (Class<?> subType : subTypes) {
 			StubTypeTree subTypeTree = typeTreeRepository.getStubTypeTree(subType);
 			subTypeTree.setParent(thisTypeTree);
 		}

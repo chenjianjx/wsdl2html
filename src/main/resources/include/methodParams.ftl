@@ -4,27 +4,23 @@
 								<table class="table table-bordered param-table">
 									<tbody>
 											<tr>
-												<th>Name</th>										
-												<th>Parameter Type</th>	
-												<th>Data Type</th>																					
+												<th>Name</th>																					 
+												<th>Type</th>																					
 												<th>Required</th>		
-												<th>Description</th>																														
+												<th>Multiple</th>																														
 											</tr>	
 									<#list method.requestStubs as stub>
 												<tr>																	
-													<td>${elementName(stub.stubName)}</td>
-													<td>TBD</td>
-													<td>
-														<table class="table table-condensed table-bordered model-rows-table">
-															<div class="panel panel-default">																																					 		
-																<@stubRow stub=stub indence=0 inheritanceInvolved=method.inheritanceInvolved/>											
-															</div>
-														</table>
+													<td>${elementName(stub.stubName)}</td>												 
+													<td>														 
+														<div class="panel panel-default">
+																<div class="panel-heading">${className(stub.type.name)}</div>																																					 		
+																<@stubChildrenAsTable stub=stub inheritanceInvolved=method.inheritanceInvolved/>											
+														</div>														  
 													</td>											
 													<td>${stub.required?string("Y","N")}</td>
 													<td>${stub.multiOccurs?string("Y","N")}</td>
-												</tr>								 					
-	
+												</tr>								 						
 										</tr>
 									</#list>												
 																					

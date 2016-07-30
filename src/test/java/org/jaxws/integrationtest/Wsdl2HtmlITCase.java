@@ -75,17 +75,17 @@ public class Wsdl2HtmlITCase {
 
 	@Test
 	public void formWsdl() throws Exception {
-		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapPortImpl());
+		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapServiceImpl());
 		String wsdlUrl = "http://localhost:9999/ws/bbs?wsdl";
 		System.out.println("Generating from " + wsdlUrl);
 		String html = Wsdl2Html.generateHtml(wsdlUrl);
-		File htmlDir = new File("output" + System.currentTimeMillis());
+		File htmlDir = new File("output");
 		FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
 		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
 	}
 
 	@WebService(endpointInterface = "org.jaxws.integrationtest.exampleWebService.BbsWebService")
-	private static final class BbsSoapPortImpl implements BbsWebService {
+	private static final class BbsSoapServiceImpl implements BbsWebService {
 
 		@Override
 		public SinglePostResponse newPost(Long currentUserId, NewPostRequest request) {
@@ -109,7 +109,7 @@ public class Wsdl2HtmlITCase {
 	}
 
 	public static void main(String[] args) {
-		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapPortImpl());
+		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapServiceImpl());
 	}
 
 }
