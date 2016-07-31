@@ -54,7 +54,7 @@ public class Wsdl2ByteCodes {
 		// there is one file that you may encounter compliation errors
 		removeWebServiceClientFile(files);
 		Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(files);
-		List<String> compilerOptions = Arrays.asList("-target", "1.6");
+		List<String> compilerOptions = Arrays.asList("-source", "1.6", "-target", "1.6");
 		JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, compilerOptions, null, compilationUnits);
 		boolean success = task.call();
 		try {
