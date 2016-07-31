@@ -1,8 +1,11 @@
 # wsdl2html
 
-Converts WSDLs to html documents which are readable by everybody.
+Converts WSDLs to html documents which are readable by everybody. 
 
-Example: 
+Online version: [http://www.wsdl2html.com](http://www.wsdl2html.com) 
+ 
+
+## Example: 
 
 ![v3-sample](doc/image/v3-sample.png)
 
@@ -10,6 +13,10 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 
 # How to run
+
+## Run online
+
+Run online if your WSDL has been hosted on a public site. Do it here: [http://www.wsdl2html.com](http://www.wsdl2html.com).
 
 ## Run as a command line tool
 
