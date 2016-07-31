@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>wsdl2html</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<name>convert wsdl xml to readable html doc</name>
 
 

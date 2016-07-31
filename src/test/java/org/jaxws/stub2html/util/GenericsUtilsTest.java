@@ -15,27 +15,21 @@ import org.junit.Test;
 public class GenericsUtilsTest {
 
 	@Test
-	public void getFieldGenericTypeTest() throws Exception{
-		assertEquals(String.class,  GenericsUtils.getFieldGenericType( getField("stringObject")));
-		assertEquals(Integer.class,  GenericsUtils.getFieldGenericType( getField("listOfInteger")));
-		assertEquals(String.class,  GenericsUtils.getFieldGenericType( getField("listOfStringList")));
+	public void getFieldGenericTypeTest() throws Exception {
+		assertEquals(String.class, GenericsUtils.getFieldGenericType(getField("stringObject")));
+		assertEquals(Integer.class, GenericsUtils.getFieldGenericType(getField("listOfInteger")));
+		assertEquals(String.class, GenericsUtils.getFieldGenericType(getField("listOfStringList")));
 	}
-	
- 
-	
-	
+
 	private Field getField(String fieldName) throws NoSuchFieldException {
 		return SampleClass.class.getDeclaredField(fieldName);
 	}
-	
-	
-	
-	
+
 	@SuppressWarnings("unused")
 	private static final class SampleClass {
 		private String stringObject;
 		private List<Integer> listOfInteger;
-		
+
 		private List<List<String>> listOfStringList;
 
 	}

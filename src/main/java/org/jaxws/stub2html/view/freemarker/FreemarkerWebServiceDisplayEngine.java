@@ -14,22 +14,22 @@ import freemarker.template.Template;
  */
 public abstract class FreemarkerWebServiceDisplayEngine extends WebServiceDisplayEngine {
 
-    protected Configuration configuration;
+	protected Configuration configuration;
 
-    public FreemarkerWebServiceDisplayEngine() {
-        super();
-        configuration = new Configuration();
-        configuration.setLocalizedLookup(false);
-        configuration.setObjectWrapper(new DefaultObjectWrapper());
-    }
+	public FreemarkerWebServiceDisplayEngine() {
+		super();
+		configuration = new Configuration();
+		configuration.setLocalizedLookup(false);
+		configuration.setObjectWrapper(new DefaultObjectWrapper());
+	}
 
-    @Override
-    public String displayWebSerivce(WebServiceStubSet serviceStubSet) {
-        Template template = getTemplate();
-        FreemarkerWebServiceDisplayer displayer = new FreemarkerWebServiceDisplayer(template, serviceStubSet);
-        return displayer.displayWebSerivce();
-    }
+	@Override
+	public String displayWebSerivce(WebServiceStubSet serviceStubSet) {
+		Template template = getTemplate();
+		FreemarkerWebServiceDisplayer displayer = new FreemarkerWebServiceDisplayer(template, serviceStubSet);
+		return displayer.displayWebSerivce();
+	}
 
-    protected abstract Template getTemplate();
+	protected abstract Template getTemplate();
 
 }

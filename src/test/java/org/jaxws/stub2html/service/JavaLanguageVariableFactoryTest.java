@@ -9,7 +9,6 @@ import java.lang.reflect.Field;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import org.jaxws.stub2html.service.JavaLanguageVariableFactory;
 import org.junit.Test;
 
 /**
@@ -31,13 +30,11 @@ public class JavaLanguageVariableFactoryTest {
 	public void createVariableFromFieldTest() throws Exception {
 		assertNotNull(JavaLanguageVariableFactory.createVariableFromField(getField("annotated")));
 	}
-	
-	
-//	@Test(expected = IllegalArgumentException.class)
-//	public void createVariableFromFieldTest_Exception() throws Exception {
-//		assertNotNull(JavaLanguageVariableFactory.createVariableFromField(getField("notAnnotated")));
-//	}
-	
+
+	// @Test(expected = IllegalArgumentException.class)
+	// public void createVariableFromFieldTest_Exception() throws Exception {
+	// assertNotNull(JavaLanguageVariableFactory.createVariableFromField(getField("notAnnotated")));
+	// }
 
 	private XmlElement getXmlElementAnnotation(String fieldName) throws NoSuchFieldException {
 		Field sampleField = getField(fieldName);
@@ -48,9 +45,7 @@ public class JavaLanguageVariableFactoryTest {
 	private Field getField(String fieldName) throws NoSuchFieldException {
 		return SampleClass.class.getDeclaredField(fieldName);
 	}
-	
-	
-	
+
 	@SuppressWarnings("unused")
 	private static final class SampleClass {
 		@XmlElement(required = true, nillable = true)
@@ -72,5 +67,3 @@ public class JavaLanguageVariableFactoryTest {
 
 	}
 }
-
-

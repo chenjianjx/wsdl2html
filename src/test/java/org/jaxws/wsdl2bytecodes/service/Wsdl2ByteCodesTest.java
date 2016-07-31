@@ -7,14 +7,12 @@ import java.util.Date;
 
 import org.junit.Test;
 
+/**
+ *
+ * @author chenjianjx
+ */
 
-/** 
-*
-* @author chenjianjx
-*/
-
-public class Wsdl2ByteCodesTest  {
-	 
+public class Wsdl2ByteCodesTest {
 
 	/**
 	 * @see org.jaxws.wsdl2bytecodes.service.Wsdl2ByteCodes#generatePakcageName

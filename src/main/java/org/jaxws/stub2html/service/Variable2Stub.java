@@ -23,16 +23,17 @@ import org.jaxws.stub2html.model.StubTypeTree;
  */
 public class Variable2Stub {
 
-	public static Stub convertToStub(JavaLanguageVariable variable, StubTypeTreeRepository typeTreeRepository) {
+	public static Stub convertToStub(JavaLanguageVariable variable, Stub parentStub, StubTypeTreeRepository typeTreeRepository) {
 
 		Stub stub = new Stub();
+		stub.setParentStubRelation(parentStub);
 		stub.setStubName(variable.getVariableName());
 		stub.setRequired(variable.isRequired());
 		stub.setHeader(variable.isHeader());
 		stub.setMultiOccurs(variable.isMultiOccurs());
 		stub.setType(variable.getType());
 
-		if (variable.getType().isAnnotationPresent(XmlType.class) && !variable.getType().isEnum()) {
+		if (variable.getType().isAnnotationPresent(XmlType.class) && !variable.getType().isEnum() && !stub.isSameTypeWithSomeAncestor()) {
 			convertFieldsToChildStubs(stub, variable.getType(), typeTreeRepository);
 		}
 
@@ -40,25 +41,26 @@ public class Variable2Stub {
 
 	}
 
-	private static void convertFieldsToChildStubs(Stub parentStub, Class<?> type, StubTypeTreeRepository typeTreeRepository) {
-		List<Field> fields = getFieldsIncludingAncestors(type);
+	private static void convertFieldsToChildStubs(Stub stub, Class<?> stubType, StubTypeTreeRepository typeTreeRepository) {
+
+		List<Field> fields = getFieldsIncludingAncestorTypes(stubType);
 		for (Field childField : fields) {
-			Stub child = convertToStub(createVariableFromField(childField), typeTreeRepository);
-			parentStub.addChild(child);
+			@SuppressWarnings("unused")
+			Stub child = convertToStub(createVariableFromField(childField), stub, typeTreeRepository);
+			// System.out.println("Child added as " + child);
 		}
 
-		LinkedList<FieldsOfSubType> fieldsOfSubTypes = getFieldsOfSubTypes(type, typeTreeRepository);
+		LinkedList<FieldsOfSubType> fieldsOfSubTypes = getFieldsOfSubTypes(stubType, typeTreeRepository);
 		for (FieldsOfSubType fieldsOfSubType : fieldsOfSubTypes) {
 			for (Field field : fieldsOfSubType.fields) {
-				Stub childStub = convertToStub(createVariableFromField(field), typeTreeRepository);
+				Stub childStub = convertToStub(createVariableFromField(field), stub, typeTreeRepository);
 				childStub.setSubTypeOfParentStub(fieldsOfSubType.subType);
-				parentStub.addChild(childStub);
 			}
 		}
 
 	}
 
-	private static List<Field> getFieldsIncludingAncestors(Class<?> type) {
+	private static List<Field> getFieldsIncludingAncestorTypes(Class<?> type) {
 		List<Field> allFields = new ArrayList<Field>();
 		while (true) {
 			Field[] fieldsArray = type.getDeclaredFields();

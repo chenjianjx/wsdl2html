@@ -29,8 +29,8 @@ public class StubTypeTreeRepository {
 	public Collection<StubTypeTree> getAllTrees() {
 		return repository.values();
 	}
-	
-	public boolean isEmpty(){
+
+	public boolean isEmpty() {
 		return repository.isEmpty();
 	}
 

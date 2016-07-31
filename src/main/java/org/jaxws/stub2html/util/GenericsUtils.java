@@ -43,11 +43,11 @@ public class GenericsUtils {
 		if (type instanceof ParameterizedType) {
 			return digFromGenericType(type);
 		}
-		
-		if (type instanceof Class){
+
+		if (type instanceof Class) {
 			return (Class<?>) type;
 		}
-		
+
 		return Object.class;
 
 	}

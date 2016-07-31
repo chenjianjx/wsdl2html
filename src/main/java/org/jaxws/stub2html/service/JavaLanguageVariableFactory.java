@@ -42,7 +42,7 @@ public class JavaLanguageVariableFactory {
 	}
 
 	private static String getElementName(Field field) {
-		return field.getName();	 
+		return field.getName();
 	}
 
 	private static String getVariableName(Field field, XmlElement annotation) {

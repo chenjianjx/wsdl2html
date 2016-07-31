@@ -6,7 +6,8 @@ import java.util.List;
 import org.jaxws.stub2html.service.StubTypeTreeRepository;
 
 /**
- * it correspond to a method in a web service 
+ * it correspond to a method in a web service
+ * 
  * @author chenjianjx
  * 
  */
@@ -16,7 +17,6 @@ public class WebMethodStubSet {
 	private List<Stub> requestStubs = new ArrayList<Stub>();
 	private Stub responseStub;
 	private StubTypeTreeRepository stubTypeTreeRepository = new StubTypeTreeRepository();
-	 
 
 	public String getMethodName() {
 		return methodName;
@@ -38,19 +38,16 @@ public class WebMethodStubSet {
 		return requestStubs;
 	}
 
-	public void addRequetStub(Stub stub){
+	public void addRequetStub(Stub stub) {
 		requestStubs.add(stub);
 	}
 
-	public StubTypeTreeRepository getStubTypeTreeRepository() {	   
+	public StubTypeTreeRepository getStubTypeTreeRepository() {
 		return stubTypeTreeRepository;
 	}
 
-    public boolean isInheritanceInvolved() {
-        return !stubTypeTreeRepository.isEmpty();
-    }
-	
-	
-	
-	
+	public boolean isInheritanceInvolved() {
+		return !stubTypeTreeRepository.isEmpty();
+	}
+
 }
