@@ -29,10 +29,6 @@ public class Wsdl2Html {
 	}
 
 	/**
-	 * if you call this method in your code, make sure the jdk version you used
-	 * to run your code is no lower than that of the jdk used by your "wsimport"
-	 * to run in shell. This issue can be tricky. I will develop a portable
-	 * solution in the future (now is 2016-3-11)
 	 * 
 	 * 
 	 * 
