@@ -20,5 +20,10 @@ public class WsdlImportException extends Exception {
 	public String getReadableReason() {
 		return readableReason;
 	}
+	
+	@Override
+	public String getMessage() { 
+		return "\n" + readableReason;
+	}
 
 }

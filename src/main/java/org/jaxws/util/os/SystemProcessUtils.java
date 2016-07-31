@@ -22,9 +22,16 @@ public class SystemProcessUtils {
 		try {
 			Process p = Runtime.getRuntime().exec(cmdArray);
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
-			collectErrorStream(p, output);
-			collectInputStream(p, output);
+			Thread errStreamThread = collectErrorStream(p, output);
+			Thread inputStreamThread = collectInputStream(p, output);
 			int returningCode = p.waitFor();
+			int timeout = 60000;
+			if (errStreamThread != null) {
+				errStreamThread.join(timeout);
+			}
+			if (inputStreamThread != null) {
+				inputStreamThread.join(timeout);
+			}
 			String consoleOutput = new String(output.toByteArray());
 			System.out.println(consoleOutput);
 			if (returningCode != 0) {
@@ -38,18 +45,22 @@ public class SystemProcessUtils {
 		}
 	}
 
-	private static void collectInputStream(Process p, OutputStream out) {
+	private static StreamPrinter collectInputStream(Process p, OutputStream out) {
 		if (p.getInputStream() != null) {
 			StreamPrinter infoStreamPrinter = new StreamPrinter(p.getInputStream(), "[INFO]", out);
 			infoStreamPrinter.start();
+			return infoStreamPrinter;
 		}
+		return null;
 	}
 
-	private static void collectErrorStream(Process p, OutputStream out) {
+	private static StreamPrinter collectErrorStream(Process p, OutputStream out) {
 		if (p.getErrorStream() != null) {
 			StreamPrinter errorStreamPrinter = new StreamPrinter(p.getErrorStream(), "[ERROR]", out);
 			errorStreamPrinter.start();
+			return errorStreamPrinter;
 		}
+		return null;
 	}
 
 }

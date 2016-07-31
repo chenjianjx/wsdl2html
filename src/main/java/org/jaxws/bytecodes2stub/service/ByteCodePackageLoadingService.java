@@ -41,8 +41,7 @@ public class ByteCodePackageLoadingService {
 	}
 
 	private static List<String> getAllClassNames(ByteCodePackage byteCodePackage) {
-		List<String> classNames = new ArrayList<String>();
-		@SuppressWarnings("unchecked")
+		List<String> classNames = new ArrayList<String>();	 
 		List<File> files = (List<File>) FileUtils.listFiles(byteCodePackage.getDir(), new String[] { "class" }, true);
 		File rootDir = byteCodePackage.getDir();
 		for (File classFile : files) {

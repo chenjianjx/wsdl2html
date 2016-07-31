@@ -1,6 +1,7 @@
 package org.jaxws.integrationtest;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -15,6 +16,7 @@ import org.jaxws.integrationtest.exampleWebService.PostListResponse;
 import org.jaxws.integrationtest.exampleWebService.SinglePostResponse;
 import org.jaxws.integrationtest.exampleWebService.UpdatePostRequest;
 import org.jaxws.integrationtest.exampleWebService.VoidResponse;
+import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
 import org.jaxws.wsdl2html.service.Wsdl2Html;
 import org.junit.Test;
 
@@ -32,18 +34,39 @@ public class Wsdl2HtmlITCase {
 		System.out.println("Generating from " + wsdlUrl);
 		String html = Wsdl2Html.generateHtml(wsdlUrl);
 		File htmlDir = new File("output");
-		FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
+		FileUtils.writeStringToFile(new File(htmlDir, "bbs.html"), html);
 		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
 	}
 
-	@Test
-	public void testAws() throws Exception {
-		String wsdlUrl = "http://webservices.amazon.com/AWSECommerceService/2013-08-01/AWSECommerceService.wsdl";
+	private void doGenerate(String wsdlUrl, String reportFileName) throws WsdlImportException, IOException {
 		System.out.println("Generating from " + wsdlUrl);
 		String html = Wsdl2Html.generateHtml(wsdlUrl);
 		File htmlDir = new File("output");
-		FileUtils.writeStringToFile(new File(htmlDir, "report.html"), html);
+		FileUtils.writeStringToFile(new File(htmlDir, reportFileName), html);
 		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
+	}
+
+	/**
+	 * http://www.service-repository.com/
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testPublicWsdls() throws Exception {
+		doGenerate("https://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl", "AWSECommerceService.html");
+		doGenerate("http://www.webservicex.com/globalweather.asmx?wsdl", "globalweather.html");
+		doGenerate("http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL", "Weather.html");
+		doGenerate("http://www.thomas-bayer.com/axis2/services/BLZService?wsdl", "BLZService.html");
+		doGenerate("http://soaptest.parasoft.com/calculator.wsdl", "calculator.html");
+		doGenerate("http://www.dneonline.com/calculator.asmx?WSDL", "calculator.html");
+		doGenerate("https://community.workday.com/custom/developer/API/Absence_Management/v26.2/Absence_Management.wsdl", "Absence_Management.html");
+		doGenerate("http://www.webservicex.com/periodictable.asmx?wsdl", "periodictable.html");
+		doGenerate("http://ws.cdyne.com/ip2geo/ip2geo.asmx?wsdl", "ip2geo.html");
+	}
+
+	@Test(expected = WsdlImportException.class)
+	public void testIllWsdl() throws Exception {
+		doGenerate("http://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl", "ndfdXML.html");
 	}
 
 	@Test(expected = Exception.class)
@@ -116,7 +139,7 @@ public class Wsdl2HtmlITCase {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws WsdlImportException, IOException {
 		Endpoint.publish("http://localhost:9999/ws/bbs", new BbsSoapServiceImpl());
 	}
 

@@ -77,6 +77,9 @@ public class Wsdl2ByteCodes {
 
 		String[] cmdArray = new String[cmdList.size()];
 		cmdList.toArray(cmdArray);
+		
+		System.out.println(StringUtils.join(cmdArray, " "));
+		
 		try {
 			String consoleOutput = SystemProcessUtils.exec(cmdArray);
 			if (consoleOutput.contains("Two declarations cause a collision in the ObjectFactory class")) {
