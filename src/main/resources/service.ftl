@@ -33,17 +33,17 @@
 			}		
 			
 			.stub-table tr td:nth-child(1){
-				width:20%;
+				width:10%;
 			}
 			.stub-table tr td:nth-child(2){				
 				width:60%;
 			}
 	
-			.stub-table tr td:nth-child(4){
+			.stub-table tr td:nth-child(3){
 				width:10%;
 			}
-			.stub-table tr td:nth-child(5){
-				width:10%;
+			.stub-table tr td:nth-child(4){
+				width:20%;
 			}													
 						
  	
