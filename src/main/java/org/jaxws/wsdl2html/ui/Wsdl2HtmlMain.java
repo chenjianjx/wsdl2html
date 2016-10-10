@@ -19,6 +19,8 @@ import org.jaxws.wsdl2html.service.Wsdl2Html;
  * 
  */
 public class Wsdl2HtmlMain {
+	private static final String TARGET_APIDOCS_LOCATION = "/target/classes/META-INF/apidocs/";
+	private static String descriptionsPath = "";
 
 	public static void main(String[] args) throws IOException, WsdlImportException {
 
@@ -41,6 +43,7 @@ public class Wsdl2HtmlMain {
 		File htmlDir = getHtmlDir(outputRootDir);
 
 		System.out.println("Generating from " + wsdlUrl);
+		Wsdl2HtmlMain.descriptionsPath = wsdlUrl;
 
 		FreemarkerWebServiceDisplayEngine displayEngine = createDisplayEngine(argList);
 		String html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine);
@@ -69,4 +72,7 @@ public class Wsdl2HtmlMain {
 		return byteCodeDir;
 	}
 
+	public static String getDescriptionsPath() {
+		return (new File(descriptionsPath)).getParent() + TARGET_APIDOCS_LOCATION;
+	}
 }

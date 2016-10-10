@@ -31,7 +31,7 @@
 												${stubType(method.responseStub)}
 											</#if>
 										</td>
-										<td></td>																	 										 										 					
+										<td>${method.methodDescription}</td>
 												
 									</tr>								
 								</#list>										

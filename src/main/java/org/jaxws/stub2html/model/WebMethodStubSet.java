@@ -17,6 +17,7 @@ public class WebMethodStubSet {
 	private List<Stub> requestStubs = new ArrayList<Stub>();
 	private Stub responseStub;
 	private StubTypeTreeRepository stubTypeTreeRepository = new StubTypeTreeRepository();
+	private String methodDescription;
 
 	public String getMethodName() {
 		return methodName;
@@ -50,4 +51,11 @@ public class WebMethodStubSet {
 		return !stubTypeTreeRepository.isEmpty();
 	}
 
+	public String getMethodDescription() {
+		return methodDescription;
+	}
+
+	public void setMethodDescription(String methodDescription) {
+		this.methodDescription = methodDescription;
+	}
 }

@@ -20,6 +20,8 @@ public class WebMethodStubSetFactory {
 	public static WebMethodStubSet createWebMethodStubSet(Method method) {
 		WebMethodStubSet stubSet = new WebMethodStubSet();
 		stubSet.setMethodName(method.getName());
+		stubSet.setMethodDescription(DescriptionLocatorRepository.getInstance().findDescriptionByMethod(method));
+
 		addRequestStubs(method, stubSet);
 		if (!Void.TYPE.equals(method.getReturnType())) {
 			addResponseStub(method, stubSet);
