@@ -41,6 +41,7 @@ public class Stub {
 	 * if parent stub's type = Product, is it FunProduct or NotFunProduct?
 	 */
 	private Class<?> subTypeOfParentStub;
+	private String description = "TODO";
 
 	public Stub getParentStub() {
 		return parentStub;
@@ -142,7 +143,7 @@ public class Stub {
 		if (this.header) {
 			return "In header";
 		}
-		return null;
+		return description;
 	}
 
 	@Override
@@ -151,4 +152,7 @@ public class Stub {
 		return "[Stub: " + type.getSimpleName() + "," + path + "]";
 	}
 
+	public void setStubDescription(String stubDescription) {
+		this.description = stubDescription;
+	}
 }

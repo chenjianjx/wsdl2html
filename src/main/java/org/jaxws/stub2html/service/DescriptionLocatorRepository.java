@@ -5,6 +5,7 @@ import org.jaxws.wsdl2html.ui.Wsdl2HtmlMain;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -29,7 +30,47 @@ public class DescriptionLocatorRepository {
         for (Description description : contents) {
             if (description.getSymbol().contains(method.getName())) {
                 descriptionFound = description.getContent();
+                break;
             }
+        }
+        if (descriptionFound.isEmpty()) {
+            System.out.println("No doc found for: " + method.getName());
+        }
+        return descriptionFound;
+    }
+
+    public String findDescriptionByVariable(Method method, String name) {
+        if (contents.isEmpty()) {
+            loadContents();
+        }
+
+        String descriptionFound = "";
+        for (Description description : contents) {
+            if (description.getSymbol().contains(method.getName() + "." + name)) {
+                descriptionFound = description.getContent();
+                break;
+            }
+        }
+        if (descriptionFound.isEmpty()) {
+            System.out.println("No doc found for: " + method.getName() + "." + name);
+        }
+        return descriptionFound;
+    }
+
+    public String getDescriptionByField(Field field) {
+        if (contents.isEmpty()) {
+            loadContents();
+        }
+
+        String descriptionFound = "";
+        for (Description description : contents) {
+            if (description.getSymbol().contains(field.getDeclaringClass().getSimpleName() + "." + field.getName())) {
+                descriptionFound = description.getContent();
+                break;
+            }
+        }
+        if (descriptionFound.isEmpty()) {
+            System.out.println("No doc found for: " + field.getDeclaringClass().getSimpleName() + ":" + field.getName());
         }
         return descriptionFound;
     }
@@ -57,6 +98,7 @@ public class DescriptionLocatorRepository {
         }
 
     }
+
 
     static class Description {
         private final String symbol;

@@ -26,10 +26,10 @@
 						 		
 						<td>${stub.required?string("Y","N")}</td>			
 						
-						<td></td>	  		
-						 																					
-					</tr>								 
+						<td>${stub.description!}</td>
+
+					</tr>
 					<#list stub.childStubs as childStub>									
 						<@stubRow stub=childStub parentPath=stubOgnl(stub, parentPath)/>
 					</#list>			 										
-		</#macro>  		 							
+		</#macro>

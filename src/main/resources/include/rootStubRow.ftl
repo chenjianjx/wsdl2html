@@ -8,7 +8,7 @@
 													</td>											
 													<td>${stub.required?string("Y","N")}</td>
 													<td>
-														${stub.description!}
+														${description(stub)}
 													</td>
 												 
-												</tr>		
+												</tr>

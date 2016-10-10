@@ -31,9 +31,11 @@ public class JavaLanguageVariableFactory {
 		XmlElement annotation = field.getAnnotation(XmlElement.class);
 		if (annotation == null) {
 			variable.setVariableName(getElementName(field));
+			variable.setDescription(DescriptionLocatorRepository.getInstance().getDescriptionByField(field));
 			variable.setRequired(true);
 		} else {
 			variable.setVariableName(getVariableName(field, annotation));
+			variable.setDescription(DescriptionLocatorRepository.getInstance().getDescriptionByField(field));
 			variable.setRequired(isVariableRequired(annotation));
 		}
 		variable.setType(GenericsUtils.getFieldGenericType(field));
@@ -84,6 +86,7 @@ public class JavaLanguageVariableFactory {
 		}
 		JavaLanguageVariable variable = new JavaLanguageVariable();
 		variable.setType(GenericsUtils.getMethodGenericReturnType(method));
+		variable.setDescription(DescriptionLocatorRepository.getInstance().findDescriptionByVariable(method, webResultAnnotation.name()));
 		variable.setVariableName(webResultAnnotation.name());
 		variable.setRequired(true);
 		variable.setHeader(webResultAnnotation.header());
@@ -97,6 +100,7 @@ public class JavaLanguageVariableFactory {
 		JavaLanguageVariable variable = new JavaLanguageVariable();
 		variable.setType(GenericsUtils.getMethodGenericParameterTypes(method, paramIndex));
 		variable.setVariableName(xmlAnnotation.name());
+		variable.setDescription(DescriptionLocatorRepository.getInstance().findDescriptionByVariable(method, xmlAnnotation.name()));
 		variable.setRequired(true);
 		variable.setHeader(xmlAnnotation.header());
 		Class<?> paramClass = method.getParameterTypes()[paramIndex];

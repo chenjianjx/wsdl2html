@@ -44,6 +44,7 @@ public class FreemarkerWebServiceDisplayer {
 			rootMap.put("stubOgnl", new DisplayStubOgnlPathMethodModel());
 			rootMap.put("stubType", new DisplayStubTypeMethodModel());
 			rootMap.put("className", new DisplayClassNameMethodModel());
+			rootMap.put("description", new DisplayStubDescriptionMethodModel());
 
 			StringWriter out = new StringWriter();
 			template.process(rootMap, out);
@@ -78,6 +79,16 @@ public class FreemarkerWebServiceDisplayer {
 		public Object exec(List arguments) throws TemplateModelException {
 			Stub stub = (Stub) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
 			return getStubNameConsideringMultiple(stub);
+		}
+	}
+
+	private final class DisplayStubDescriptionMethodModel implements TemplateMethodModelEx {
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public Object exec(List arguments) throws TemplateModelException {
+			Stub stub = (Stub) DeepUnwrap.unwrap((TemplateModel) arguments.get(0));
+			return stub.getDescription();
 		}
 	}
 
