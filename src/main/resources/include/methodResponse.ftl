@@ -7,8 +7,6 @@
 												<th>Name</th>																					 
 												<th>Type</th>		
 											 													
-												<th>Required</th>	
-											 																										
 											</tr>									 
 												<#include "responseRootStubRow.ftl"/>						 																											
 									</tbody>						

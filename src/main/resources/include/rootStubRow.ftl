@@ -6,7 +6,6 @@
 																<@stubChildrenAsTable stub=stub/>											
 														</div>														  
 													</td>											
-													<td>${stub.required?string("Y","N")}</td>
 													<td>
 														${description(stub)}
 													</td>

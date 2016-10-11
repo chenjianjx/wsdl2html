@@ -26,10 +26,10 @@
     			width:20%;
 			}
  			.summary-table tr td:nth-child(4){
-    			width:20%;
-			}					
+    			width:10%;
+			}		
  			.summary-table tr td:nth-child(5){
-    			width:35%;
+    			width:45%;
 			}		
 			
 			.stub-table tr td:nth-child(1){
@@ -40,12 +40,8 @@
 			}
 	
 			.stub-table tr td:nth-child(3){
-				width:10%;
+				width:30%;
 			}
-			.stub-table tr td:nth-child(4){
-				width:20%;
-			}													
-						
  	
 			
 			.model-rows-table tr td:nth-child(1){
@@ -55,12 +51,8 @@
 				width:25%;
 			}		
 			.model-rows-table tr td:nth-child(3){
-				width:10%;
+				width:45%;
 			}		
-			.model-rows-table tr td:nth-child(4){
-				width:35%;
-			}		
-			
  						
 			
 		</style>

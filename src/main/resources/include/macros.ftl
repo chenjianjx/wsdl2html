@@ -4,7 +4,6 @@
 					<tr>
 						<th>Property</th>
 						<th>Type</th>						
-						<th>Required</th>
 						<th>Description</th>						 
 					</tr>
 					<#list stub.childStubs as childStub>									
@@ -24,8 +23,6 @@
 							${stubType(stub)}
 						</td>
 						 		
-						<td>${stub.required?string("Y","N")}</td>			
-						
 						<td>${stub.description!}</td>
 
 					</tr>
