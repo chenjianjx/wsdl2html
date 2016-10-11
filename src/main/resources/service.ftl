@@ -49,7 +49,7 @@
  	
 			
 			.model-rows-table tr td:nth-child(1){
-				width:55%;
+				width:20%;
 			} 
 			.model-rows-table tr td:nth-child(2){
 				width:25%;
@@ -58,7 +58,7 @@
 				width:10%;
 			}		
 			.model-rows-table tr td:nth-child(4){
-				width:10%;
+				width:35%;
 			}		
 			
  						

@@ -4,6 +4,7 @@ import static org.jaxws.stub2html.service.WebMethodStubSetFactory.createWebMetho
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -21,6 +22,12 @@ public class WebServiceStubSetFactory {
 		List<Method> methods = getWebMethods(webServiceClass);
 		WebServiceStubSet serviceStubs = new WebServiceStubSet();
 		serviceStubs.setWebServiceClass(webServiceClass);
+		methods.sort(new Comparator<Method>() {
+			@Override
+			public int compare(Method o1, Method o2) {
+				return o1.getName().compareTo(o2.getName());
+			}
+		});
 		for (Method method : methods) {
 			serviceStubs.addMethodStub(createWebMethodStubSet(method));
 		}
