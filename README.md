@@ -24,7 +24,7 @@ Run online if your WSDL has been hosted on a public site. Do it here: [http://ww
 
 mvn package 
 cd target 
-unzip target/wsdl2html-some-version-jarset.zip -d /path/to/your/dir
+unzip wsdl2html-some-version-jarset.zip -d /path/to/your/dir
 
 # Go to the direction of extraction and you will see an executable file. Run it like, 
 
