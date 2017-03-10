@@ -28,6 +28,7 @@ public class Variable2Stub {
 		Stub stub = new Stub();
 		stub.setParentStubRelation(parentStub);
 		stub.setStubName(variable.getVariableName());
+		stub.setStubDescription(variable.getDescription());
 		stub.setRequired(variable.isRequired());
 		stub.setHeader(variable.isHeader());
 		stub.setMultiOccurs(variable.isMultiOccurs());

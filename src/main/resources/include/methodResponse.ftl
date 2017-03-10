@@ -7,11 +7,8 @@
 												<th>Name</th>																					 
 												<th>Type</th>		
 											 													
-												<th>Required</th>	
-												<th>Description</th>	
-											 																										
 											</tr>									 
-												<#include "rootStubRow.ftl"/>						 																											
+												<#include "responseRootStubRow.ftl"/>						 																											
 									</tbody>						
 														
 								</table>		

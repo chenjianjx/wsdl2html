@@ -6,8 +6,5 @@
 																<@stubChildrenAsTable stub=stub/>											
 														</div>														  
 													</td>											
-													<td>
-														${description(stub)}
-													</td>
 												 
 												</tr>

@@ -34,6 +34,8 @@ public class JavaLanguageVariable {
 	 */
 	private boolean header;
 
+	private String description;
+
 	public boolean isHeader() {
 		return header;
 	}
@@ -80,4 +82,11 @@ public class JavaLanguageVariable {
 		this.multiOccurs = multiOccurs;
 	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDescription() {
+		return description;
+	}
 }

@@ -7,7 +7,6 @@
 												<th>Name</th>																					 
 												<th>Type</th>																					
 											 
-												<th>Required</th>
 												<th>Description</th>		
 										 																									
 											</tr>	
