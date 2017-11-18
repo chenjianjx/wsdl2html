@@ -10,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
 public class ClassNameUtils {
 
 	/**
-	 * com.sun.Hello => com/sun
+	 * com.sun.Hello =&gt; com/sun
 	 * 
 	 * @param className
 	 * @return
@@ -25,14 +25,14 @@ public class ClassNameUtils {
 	}
 
 	/**
-	 * com/sun => com.sun
+	 * com/sun =&gt; com.sun
 	 */
 	public static String toRelativeDir(String packageName) {
 		return StringUtils.replace(packageName, ".", "/");
 	}
 
 	/**
-	 * com.sun.Hello => Hello.class
+	 * com.sun.Hello =&gt; Hello.class
 	 * 
 	 * @param className
 	 * @return
@@ -43,7 +43,7 @@ public class ClassNameUtils {
 	}
 
 	/**
-	 * com/sun => com.sun
+	 * com/sun =&gt; com.sun
 	 * 
 	 * @param relativeDir
 	 * @return

@@ -16,19 +16,18 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 ## Run online
 
-Run online if your WSDL has been hosted on a public site. Do it here: [http://www.wsdl2html.com](http://www.wsdl2html.com).
+Run online if your WSDL has been hosted on a public site. Do it here: [http://www.wsdl2html.com](http://www.wsdl2html.com) 
 
 ## Run as a command line tool
 
-```shell
+```bash
 
 mvn package 
 cd target 
-unzip wsdl2html-some-version-jarset.zip -d /path/to/your/dir
-
-# Go to the direction of extraction and you will see an executable file. Run it like, 
-
-./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  # or wsdl2html.bat for windows
+unzip wsdl2html*jarset.zip -d /path/to/your/dir
+cd /path/to/your/dir/wsdl2html*
+./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  
+# or wsdl2html.bat for windows
 
 ```
 
@@ -39,16 +38,8 @@ In your pom.xml, add the following:
 
 ```xml
 
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-		...
-	</repositories>
-
-
 	<dependencies>
+		...	
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
@@ -63,7 +54,7 @@ In your pom.xml, add the following:
 
 ```java
 
-//if you call this method in your code, make sure the jdk version you used to run your code is 
+//Note: if you call this method in your code, make sure the jdk version you used to run your code is 
 // no lower than that of the jdk used by your "wsimport" to run in shell
 
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 

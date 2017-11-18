@@ -4,13 +4,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * A tree-like structure indicating the inheritance of java classes involved in
- * the stubs <br/>
+ * <p> A tree-like structure indicating the inheritance of java classes involved in
+ * the stubs </p>
  * 
- * <b>Important</b>: B.class is considered the child type of A.class, if and
- * only if <br/>
- * a. A.class is assignable from B.class in terms of Java language<br/>
- * b. and A.class is annotated as @XmlSeeAlso(B.class)
+ * <p>  <b>Important</b>: B.class is considered the child type of A.class, if and
+ * only if: </p>
+ * 	<p>1. A.class is assignable from B.class in terms of Java language</p>
+ * 	<p>2. and A.class is annotated as @XmlSeeAlso(B.class) </p>
  * 
  * 
  * @author chenjianjx
