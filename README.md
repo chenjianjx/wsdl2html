@@ -23,8 +23,7 @@ Run online if your WSDL has been hosted on a public site. Do it here: [http://ww
 ```bash
 
 mvn package 
-cd target 
-unzip wsdl2html*jarset.zip -d /path/to/your/dir
+unzip target/wsdl2html*jarset.zip -d /path/to/your/dir
 cd /path/to/your/dir/wsdl2html*
 ./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  
 # or wsdl2html.bat for windows
@@ -43,7 +42,7 @@ In your pom.xml, add the following:
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
-			<version>3.0.2</version>
+			<version>4.0.0</version>
 		</dependency>
 		...
 	</dependencies>	
