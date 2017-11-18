@@ -4,21 +4,58 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>wsdl2html</artifactId>
-	<version>3.0.2</version>
-	<name>convert wsdl xml to readable html doc</name>
-
+	<version>4.0.0</version>
+	<name>SOAP WSDL to Html</name>
+	<description>A java tool to convert wsdl xml to readable doc</description>
+	<url>https://github.com/chenjianjx/wsdl2html</url>
 
 	<properties>
 		<junit.version>4.9</junit.version>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	 
 	</properties>
+
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+
+	<developers>
+		<developer>
+			<name>Jian Chen</name>
+			<email>chenjianjx@gmail.com</email>
+			<organizationUrl>http://www.chenjianjx.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/chenjianjx/wsdl2html.git</connection>
+		<developerConnection>scm:git:ssh://github.com:chenjianjx/wsdl2html.git</developerConnection>
+		<url>https://github.com/chenjianjx/wsdl2html</url>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+
+
 	<build>
 		<plugins>
 
 
-			<plugin>  <!-- Create sources.jar -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
@@ -31,6 +68,18 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 
 			<plugin>
@@ -93,5 +142,28 @@
 
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
