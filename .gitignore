@@ -2,5 +2,5 @@
 .settings
 .classpath
 .DS_Store
-/target/
 /output*
+/.gradle/
