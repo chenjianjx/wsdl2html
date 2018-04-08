@@ -24,12 +24,12 @@ public class Wsdl2HtmlMain {
 
 		if (args == null || args.length == 0) {
 			System.out.println("Params:  wsdlUrl [targetDir]");
-			return;
+			//return;
 		}
 
 		List<String> argList = new ArrayList<String>(Arrays.asList(args));
 
-		String wsdlUrl = argList.get(0);
+		String wsdlUrl = "http://www.wsdl2html.com/assets/static/sample.wsdl";
 
 		File outputRootDir = new File("output/" + getUniqueNumber());
 		if (argList.size() > 1) {
