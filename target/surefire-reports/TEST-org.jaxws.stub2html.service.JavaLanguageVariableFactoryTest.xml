@@ -1,92 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0" errors="0" skipped="0" tests="2" name="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest">
+<testsuite tests="2" failures="0" name="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest" time="0" errors="0" skipped="0">
   <properties>
-    <property name="java.vendor" value="IBM Corporation"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="os.name" value="Windows 10"/>
-    <property name="sun.boot.class.path" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin\compressedrefs\jclSC170\vm.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\se-service.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\math.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\jlm.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmorb.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmorbapi.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmcfw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmpkcs.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmcertpathfw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmjgssfw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmjssefw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmsaslfw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmjcefw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmjgssprovider.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmjsseprovider2.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmcertpathprovider.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\xmldsigfw.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\xml.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\charsets.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\resources.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\rt.jar;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ibmgpu.jar"/>
-    <property name="sun.desktop" value="windows"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.runtime.version" value="pwa6470sr9fp40-20160422_01 (SR9 FP40)"/>
-    <property name="user.name" value="mohammed"/>
-    <property name="java.compiler" value="j9jit26"/>
-    <property name="os.encoding" value="UTF8"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="com.ibm.util.extralibs.properties" value=""/>
-    <property name="com.ibm.jcl.checkClassPath" value=""/>
-    <property name="user.language" value="en"/>
-    <property name="com.ibm.oti.vm.bootstrap.library.path" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin\compressedrefs;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin"/>
-    <property name="sun.boot.library.path" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin\compressedrefs;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin"/>
-    <property name="classworlds.conf" value="C:\Downloads\apache-maven-3.5.3-bin\apache-maven-3.5.3\bin\..\bin\m2.conf"/>
-    <property name="java.version" value="1.7.0"/>
-    <property name="user.timezone" value="Asia/Jerusalem"/>
-    <property name="com.ibm.system.agent.path" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin"/>
-    <property name="sun.arch.data.model" value="64"/>
-    <property name="com.ibm.zero.version" value="2"/>
-    <property name="java.endorsed.dirs" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\endorsed"/>
-    <property name="com.ibm.oti.vm.library.version" value="26"/>
-    <property name="sun.jnu.encoding" value="Cp1256"/>
-    <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="jxe.current.romimage.version" value="17"/>
-    <property name="file.separator" value="\"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="maven.conf" value="C:\Downloads\apache-maven-3.5.3-bin\apache-maven-3.5.3\bin\../conf"/>
-    <property name="java.class.version" value="51.0"/>
-    <property name="user.country" value="US"/>
-    <property name="java.home" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre"/>
-    <property name="java.vm.info" value="JRE 1.7.0 Windows 10 amd64-64 Compressed References 20160406_298397 (JIT enabled, AOT enabled)
-J9VM - R26_Java726_SR9_20160406_0949_B298397
-JIT  - tr.r11_20160328_114192
-GC   - R26_Java726_SR9_20160406_0949_B298397_CMPRSS
-J9CL - 20160406_298397"/>
-    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Android\Android Studio\jre\jre\bin"/>
+    <property name="java.vm.version" value="25.112-b06"/>
+    <property name="java.vm.vendor" value="JetBrains s.r.o"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\mohammed\Documents\GitHub\wsdl2html"/>
+    <property name="java.vendor.url" value="https://www.jetbrains.com/"/>
     <property name="path.separator" value=";"/>
-    <property name="java.vm.version" value="2.6"/>
-    <property name="user.variant" value=""/>
-    <property name="console.encoding" value="Cp720"/>
-    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="ibm.signalhandling.sigint" value="true"/>
-    <property name="user.home" value="C:\Users\mohammed"/>
-    <property name="com.ibm.cpu.endian" value="little"/>
-    <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="ibm.signalhandling.sigchain" value="true"/>
-    <property name="library.jansi.path" value="C:\Downloads\apache-maven-3.5.3-bin\apache-maven-3.5.3\bin\..\lib\jansi-native"/>
-    <property name="java.library.path" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin\compressedrefs;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\tools\ConEmu\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\tools\ConEmu\Scripts;C:\tools;C:\tools\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Calibre2\;C:\HashiCorp\Vagrant\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\bin;C:\Program Files (x86)\Skype\Phone\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;."/>
-    <property name="java.vendor.url" value="http://www.ibm.com/"/>
-    <property name="java.vm.vendor" value="IBM Corporation"/>
-    <property name="java.fullversion" value="JRE 1.7.0 IBM J9 2.6 Windows 10 amd64-64 Compressed References 20160406_298397 (JIT enabled, AOT enabled)
-J9VM - R26_Java726_SR9_20160406_0949_B298397
-JIT  - tr.r11_20160328_114192
-GC   - R26_Java726_SR9_20160406_0949_B298397_CMPRSS
-J9CL - 20160406_298397"/>
-    <property name="maven.home" value="C:\Downloads\apache-maven-3.5.3-bin\apache-maven-3.5.3\bin\.."/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
-    <property name="java.class.path" value="C:\Downloads\apache-maven-3.5.3-bin\apache-maven-3.5.3\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.vm.specification.version" value="1.7"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="java.io.tmpdir" value="C:\Users\mohammed\AppData\Local\Temp\"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\mohammed\git\wsdl2html"/>
-    <property name="ibm.system.encoding" value="Cp1256"/>
-    <property name="os.arch" value="amd64"/>
+    <property name="user.dir" value="C:\Users\mohammed\Documents\GitHub\wsdl2html"/>
+    <property name="java.runtime.version" value="1.8.0_112-release-b06"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="ibm.signalhandling.rs" value="false"/>
-    <property name="java.ext.dirs" value="C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\jre\lib\ext"/>
-    <property name="user.dir" value="C:\Users\mohammed\git\wsdl2html"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Android\Android Studio\jre\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\mohammed\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
-    <property name="java.vm.name" value="IBM J9 VM"/>
-    <property name="com.ibm.oti.shared.enabled" value="false"/>
-    <property name="com.ibm.vm.bitmode" value="64"/>
-    <property name="jxe.lowest.romimage.version" value="17"/>
-    <property name="file.encoding" value="Cp1252"/>
-    <property name="com.ibm.oti.configuration" value="scar"/>
-    <property name="java.specification.version" value="1.7"/>
-    <property name="com.ibm.oti.jcl.build" value="20160406_298397"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Users\mohammed\WSDL2HTML\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1926225459517371625.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1256"/>
+    <property name="java.library.path" value="C:\Program Files\Android\Android Studio\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Android/Android Studio/jre/jre/bin/server;C:/Program Files/Android/Android Studio/jre/jre/bin;C:/Program Files/Android/Android Studio/jre/jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\tools\ConEmu\Scripts;C:\tools;C:\tools\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Calibre2\;C:\HashiCorp\Vagrant\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\bin;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseGit\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\mohammed\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\system32;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\mohammed"/>
+    <property name="user.timezone" value="Asia/Jerusalem"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1256"/>
+    <property name="user.name" value="mohammed"/>
+    <property name="java.class.path" value="/C:/JAZZRTC/rtcdocker-master/rtcdocker-master/fullRtcTest/eclipse/../../../../../Users/mohammed/.p2/pool/plugins/org.eclipse.m2e.maven.runtime_1.7.0.20160603-1931/jars/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Android\Android Studio\jre\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_112-release"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Android\Android Studio\jre\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Android\Android Studio\jre\jre\lib\resources.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\rt.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\sunrsasign.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jsse.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jce.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\charsets.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jfr.jar;C:\Program Files\Android\Android Studio\jre\jre\classes"/>
+    <property name="java.vendor" value="JetBrains s.r.o"/>
+    <property name="maven.home" value="C:\Users\mohammed\Documents\GitHub\wsdl2html\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="https://youtrack.jetbrains.com"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest" name="isVariableRequiredTest"/>
-  <testcase time="0" classname="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest" name="createVariableFromFieldTest"/>
+  <testcase classname="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest" name="isVariableRequiredTest" time="0"/>
+  <testcase classname="org.jaxws.stub2html.service.JavaLanguageVariableFactoryTest" name="createVariableFromFieldTest" time="0"/>
 </testsuite>
