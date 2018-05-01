@@ -16,7 +16,7 @@
 		
 		<#macro stubRow stub parentPath>			 	
 					<tr>
-						<td>
+						<td >
 							${stubOgnl(stub, parentPath)}
 						</td>						
 						 		

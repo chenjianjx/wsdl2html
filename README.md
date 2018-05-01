@@ -31,6 +31,11 @@ unzip wsdl2html-some-version-jarset.zip -d /path/to/your/dir
 ./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  # or wsdl2html.bat for windows
 
 ```
+## Run As  UI 
+
+run wsdl2htmlForm.bat
+
+![UI form](doc/image/Form UI .PNG)
 
 
 ## Run it inside your application

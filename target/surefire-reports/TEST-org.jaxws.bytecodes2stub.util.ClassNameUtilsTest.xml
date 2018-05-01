@@ -12,7 +12,7 @@
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="user.script" value=""/>
-    <property name="user.country" value="US"/>
+    <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
@@ -27,9 +27,9 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\mohammed\WSDL2HTML\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1926225459517371625.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\mohammed\WSDL2HTML\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5325553737079379536.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1256"/>
-    <property name="java.library.path" value="C:\Program Files\Android\Android Studio\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Android/Android Studio/jre/jre/bin/server;C:/Program Files/Android/Android Studio/jre/jre/bin;C:/Program Files/Android/Android Studio/jre/jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\tools\ConEmu\Scripts;C:\tools;C:\tools\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Calibre2\;C:\HashiCorp\Vagrant\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\bin;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseGit\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\mohammed\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\system32;;."/>
+    <property name="java.library.path" value="C:\Program Files\Android\Android Studio\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Android/Android Studio/jre/jre/bin/server;C:/Program Files/Android/Android Studio/jre/jre/bin;C:/Program Files/Android/Android Studio/jre/jre/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\tools\ConEmu\Scripts;C:\tools;C:\tools\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Calibre2\;C:\HashiCorp\Vagrant\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\bin;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseGit\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\mohammed\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\system32;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase classname="org.jaxws.bytecodes2stub.util.ClassNameUtilsTest" name="testToPackageName" time="0"/>
   <testcase classname="org.jaxws.bytecodes2stub.util.ClassNameUtilsTest" name="testToSimpleFileName" time="0"/>
   <testcase classname="org.jaxws.bytecodes2stub.util.ClassNameUtilsTest" name="testGetRelativePath" time="0"/>
-  <testcase classname="org.jaxws.bytecodes2stub.util.ClassNameUtilsTest" name="testToPackageName" time="0"/>
 </testsuite>
