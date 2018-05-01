@@ -35,7 +35,7 @@ unzip wsdl2html-some-version-jarset.zip -d /path/to/your/dir
 
 run wsdl2htmlForm.bat
 
-![UI form](doc/image/Form UI .PNG)
+![UI form](doc/image/FormUI.png)
 
 
 ## Run it inside your application
