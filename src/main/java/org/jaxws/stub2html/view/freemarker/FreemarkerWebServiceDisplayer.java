@@ -67,10 +67,16 @@ public class FreemarkerWebServiceDisplayer {
 			if (parentPath == null || StringUtils.isEmpty(parentPath)) {
 				return getStubNameConsideringMultiple(stub);
 			}
-			return parentPath + "." + getStubNameConsideringMultiple(stub);
+			int dept=stub.getNamePathFromMeToRootAncestor().size();
+			String prefix=repeat("&nbsp&nbsp&nbsp",dept);
+			
+			return prefix + "" + getStubNameConsideringMultiple(stub);
 		}
 	}
-
+	public String repeat(String str, int count){
+	    if(count <= 0) {return "";}
+	    return new String(new char[count]).replace("\0", str);
+	}
 	private final class DisplayStubNameMethodModel implements TemplateMethodModelEx {
 
 		@SuppressWarnings("rawtypes")

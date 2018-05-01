@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://example.bank.skjolber.github.com/v1"
+	xmlns:tns="http://example.bank.skjolber.github.com/v1" elementFormDefault="qualified"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	>
+
+	<annotation>
+		<documentation>Example of web service</documentation>
+	</annotation>
+
+	<element name="getAccountsRequest">
+		<complexType>
+			<sequence>
+	<element name="customerNumber" type="tns:customerNumberType">
+                    <annotation>
+                        <documentation>
+                            Bank customer identifier
+                        </documentation>
+                    </annotation>				
+				</element>
+				<element name="certificate" type="base64Binary" xmime:expectedContentTypes="application/octet-stream" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="getAccountsResponse">
+		<complexType>
+			<sequence>
+				<element name="account" type="string" minOccurs="0"
+					maxOccurs="unbounded">
+					<annotation>
+						<documentation>
+							Bank accounts number for customer
+						</documentation>
+					</annotation>
+				</element>
+				<element name="certificate" type="base64Binary"
+					xmime:expectedContentTypes="application/octet-stream"
+					minOccurs="0" />
+				<element name="Rec" type="string" minOccurs="1"
+					maxOccurs="1">
+				</element>
+				<element name="RecO" type="string" minOccurs="0"
+					maxOccurs="1">
+					<annotation>
+						<documentation>Hello man</documentation>
+					</annotation>
+				</element>
+				<element name="record">
+					<complexType>
+						<sequence>
+							<element name="recordone" type="string"></element>
+							<element name="recordtwo" type="string"></element>
+							<element name="NewElement">
+								<complexType>
+									<sequence>
+										<element name="Lool"
+											type="string">
+										</element>
+									</sequence>
+								</complexType></element>
+						</sequence>
+					</complexType></element>
+			</sequence>
+		</complexType>
+	</element>
+
+    <element name="bankException" >
+        <complexType>
+            <sequence>
+                <element name="code" type="tns:code"/>
+                <element name="message" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="customerException">
+        <sequence>
+            <element name="status" type="string"/>
+        </sequence>
+    </complexType>
+
+	<simpleType name="code">
+		<annotation>
+			<documentation>Trivial code types so to easily break validation in examples</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[a-z]+" />
+		</restriction>
+	</simpleType>    
+	
+	<simpleType name="customerNumberType">
+		<annotation>
+			<documentation>Trivial code types so to easily break validation in examples</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[0-9]+" />
+		</restriction>
+	</simpleType>  	
+
+	<element name="bankRequestHeader">
+		<complexType>
+			<sequence>
+				<element name="secret" type="string">
+                    <annotation>
+                        <documentation>
+                            Secret token 
+                        </documentation>
+                    </annotation>				
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

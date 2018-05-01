@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://example.shop.skjolber.github.com/v1"
+	xmlns:tns="http://example.shop.skjolber.github.com/v1" elementFormDefault="qualified">
+
+	<annotation>
+		<documentation>Example of web service</documentation>
+	</annotation>
+
+	<element name="getItemsRequest">
+		<complexType>
+			<sequence>
+				<element name="customerNumber" type="tns:customerNumberType">
+                    <annotation>
+                        <documentation>
+                            Shop customer identifier
+                        </documentation>
+                    </annotation>				
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="getItemsResponse">
+		<complexType>
+			<sequence>
+				<element name="item" type="string" minOccurs="0" maxOccurs="unbounded">
+                    <annotation>
+                        <documentation>
+                            Shop item number for customer 
+                        </documentation>
+                    </annotation>				
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+    <element name="shopException" >
+        <complexType>
+            <sequence>
+                <element name="code" type="tns:code"/>
+                <element name="message" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="customerException">
+        <sequence>
+            <element name="status" type="string"/>
+        </sequence>
+    </complexType>
+
+	<simpleType name="code">
+		<annotation>
+			<documentation>Trivial code types so to easily break validation in examples</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[a-z]+" />
+		</restriction>
+	</simpleType>    
+	
+	<simpleType name="customerNumberType">
+		<annotation>
+			<documentation>Trivial code types so to easily break validation in examples</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[0-9]+" />
+		</restriction>
+	</simpleType>  	
+
+	<element name="shopRequestHeader">
+		<complexType>
+			<sequence>
+				<element name="secret" type="string">
+                    <annotation>
+                        <documentation>
+                            Secret token 
+                        </documentation>
+                    </annotation>				
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

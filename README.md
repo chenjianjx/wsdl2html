@@ -29,6 +29,11 @@ cd /path/to/your/dir/wsdl2html*
 # or wsdl2html.bat for windows
 
 ```
+## Run As  UI 
+
+run wsdl2htmlForm.bat
+
+![UI form](doc/image/FormUI.png)
 
 
 ## Run it inside your application

@@ -1,0 +1,5 @@
+<getAccountsRequest xmlns="http://soap.spring.example.skjolberg.com/v1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://soap.spring.example.skjolberg.com/v1 ../wsdl/BankCustomerService.xsd">
+	<customerNumber>123456789</customerNumber>
+</getAccountsRequest>

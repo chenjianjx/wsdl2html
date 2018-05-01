@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="0" name="org.jaxws.util.ProcessUtilsTest" time="0.141" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Android\Android Studio\jre\jre\bin"/>
+    <property name="java.vm.version" value="25.112-b06"/>
+    <property name="java.vm.vendor" value="JetBrains s.r.o"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\mohammed\Documents\GitHub\wsdl2html"/>
+    <property name="java.vendor.url" value="https://www.jetbrains.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\mohammed\Documents\GitHub\wsdl2html"/>
+    <property name="java.runtime.version" value="1.8.0_112-release-b06"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Android\Android Studio\jre\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\mohammed\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Users\mohammed\WSDL2HTML\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5325553737079379536.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1256"/>
+    <property name="java.library.path" value="C:\Program Files\Android\Android Studio\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Android/Android Studio/jre/jre/bin/server;C:/Program Files/Android/Android Studio/jre/jre/bin;C:/Program Files/Android/Android Studio/jre/jre/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\tools\ConEmu\Scripts;C:\tools;C:\tools\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Calibre2\;C:\HashiCorp\Vagrant\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\JAZZRTC\rtcdocker-master\rtcdocker-master\fullRtcTest\RTC-Client-Win64-6.0.3 (1)\jazz\jdk\bin;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseGit\bin;C:\Users\mohammed\Anaconda2;C:\Users\mohammed\Anaconda2\Scripts;C:\Users\mohammed\Anaconda2\Library\bin;C:\Users\mohammed\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\mohammed\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\mohammed\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\system32;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\mohammed"/>
+    <property name="user.timezone" value="Asia/Jerusalem"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1256"/>
+    <property name="user.name" value="mohammed"/>
+    <property name="java.class.path" value="/C:/JAZZRTC/rtcdocker-master/rtcdocker-master/fullRtcTest/eclipse/../../../../../Users/mohammed/.p2/pool/plugins/org.eclipse.m2e.maven.runtime_1.7.0.20160603-1931/jars/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Android\Android Studio\jre\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_112-release"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Android\Android Studio\jre\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Android\Android Studio\jre\jre\lib\resources.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\rt.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\sunrsasign.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jsse.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jce.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\charsets.jar;C:\Program Files\Android\Android Studio\jre\jre\lib\jfr.jar;C:\Program Files\Android\Android Studio\jre\jre\classes"/>
+    <property name="java.vendor" value="JetBrains s.r.o"/>
+    <property name="maven.home" value="C:\Users\mohammed\Documents\GitHub\wsdl2html\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="https://youtrack.jetbrains.com"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="org.jaxws.util.ProcessUtilsTest" name="testExec" time="0.141"/>
+</testsuite>

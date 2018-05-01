@@ -1,0 +1,4 @@
+<bankException xmlns="http://soap.spring.example.skjolberg.com/v1">
+	<code>myErrorCode</code>
+	<message>myErrorMessage</message>
+</bankException>
