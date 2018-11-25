@@ -1,8 +1,6 @@
 # wsdl2html
 
 Converts WSDLs to html documents which are readable by everybody. 
-
-Online version: [http://www.wsdl2html.com](http://www.wsdl2html.com) 
  
 
 ## Example: 
