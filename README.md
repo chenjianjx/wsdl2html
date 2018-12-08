@@ -12,10 +12,6 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 # How to run
 
-## Run online
-
-Run online if your WSDL has been hosted on a public site. Do it here: [http://www.wsdl2html.com](http://www.wsdl2html.com) 
-
 ## Run as a command line tool
 
 ```bash
