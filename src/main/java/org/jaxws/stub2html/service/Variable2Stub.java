@@ -50,14 +50,6 @@ public class Variable2Stub {
 			// System.out.println("Child added as " + child);
 		}
 
-		LinkedList<FieldsOfSubType> fieldsOfSubTypes = getFieldsOfSubTypes(stubType, typeTreeRepository);
-		for (FieldsOfSubType fieldsOfSubType : fieldsOfSubTypes) {
-			for (Field field : fieldsOfSubType.fields) {
-				Stub childStub = convertToStub(createVariableFromField(field), stub, typeTreeRepository);
-				childStub.setSubTypeOfParentStub(fieldsOfSubType.subType);
-			}
-		}
-
 	}
 
 	private static List<Field> getFieldsIncludingAncestorTypes(Class<?> type) {
