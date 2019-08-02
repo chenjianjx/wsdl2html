@@ -24,6 +24,14 @@ cd /path/to/your/dir/wsdl2html*
 
 ```
 
+## Run with docker
+
+```bash
+docker build -t wsdl2html .
+docker run --rm \
+  -v $(pwd)/output:/usr/src/output \
+  wsdl2html http://.../some?wsdl
+```
 
 ## Run it inside your application
 
