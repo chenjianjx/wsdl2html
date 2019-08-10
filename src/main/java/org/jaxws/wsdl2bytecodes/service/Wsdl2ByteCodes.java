@@ -133,6 +133,7 @@ public class Wsdl2ByteCodes {
 			cmdList.add(packageName);
 		}
 		cmdList.add("-verbose");
+		cmdList.add("-extension");
 		cmdList.add(wsdlUrl);
 
 		String[] cmdArray = new String[cmdList.size()];
