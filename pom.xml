@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>wsdl2html</artifactId>
-	<version>4.0.1</version>
+	<version>4.1.0</version>
 	<name>SOAP WSDL to Html</name>
 	<description>A java tool to convert wsdl xml to readable doc</description>
 	<url>https://github.com/chenjianjx/wsdl2html</url>
 
 	<properties>
 		<junit.version>4.9</junit.version>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -71,6 +71,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -79,6 +80,10 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<source>${jdk.version}</source>
+					<doclint>none</doclint>
+				</configuration>
 			</plugin>
 
 
@@ -138,6 +143,19 @@
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>2.3.20</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>2.3.0</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>javax.activation-api</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 
 	</dependencies>

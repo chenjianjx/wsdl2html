@@ -1,5 +1,20 @@
 package org.jaxws.wsdl2bytecodes.service;
 
+import com.sun.tools.ws.wscompile.WsimportTool;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.RandomUtils;
+import org.jaxws.util.lang.RandomStringUtils;
+import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
+
+import javax.tools.Diagnostic;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,22 +25,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
-import javax.tools.Diagnostic;
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
-import javax.tools.ToolProvider;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
-import org.jaxws.util.lang.RandomStringUtils;
-import org.jaxws.util.os.SystemProcessException;
-import org.jaxws.util.os.SystemProcessUtils;
-import org.jaxws.wsdl2bytecodes.model.ByteCodePackage;
 
 /**
  * 
@@ -54,7 +53,7 @@ public class Wsdl2ByteCodes {
 		// there is one file that you may encounter compliation errors
 		removeWebServiceClientFile(files);
 		Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(files);
-		List<String> compilerOptions = Arrays.asList("-source", "1.6", "-target", "1.6");
+		List<String> compilerOptions = Arrays.asList("-source", "1.8", "-target", "1.8");
 		JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, compilerOptions, null, compilationUnits);
 		boolean success = task.call();
 		try {
@@ -106,49 +105,48 @@ public class Wsdl2ByteCodes {
 		return StringUtils.join(fragments, ".");
 	}
 
+	//See:  https://stackoverflow.com/a/16370962
 	private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws WsdlImportException {
+
+
+
 
 		File jaxbFile = copyDefaultJaxbFile(outputDir);
 
-		List<String> cmdList = new ArrayList<String>();
-		if (isWindows()) {
-			cmdList.add("cmd.exe");
-			cmdList.add("/c");
-		}
-
-		cmdList.add("wsimport");
-		cmdList.add("-B-XautoNameResolution");
-		cmdList.add("-b");
-		cmdList.add(jaxbFile.getAbsolutePath());
-		cmdList.add("-s");
-		cmdList.add(outputDir);
-		cmdList.add("-d");
-		cmdList.add(outputDir);
+		List<String> argList = new ArrayList<String>();
+		argList.add("-B-XautoNameResolution");
+		argList.add("-b");
+		argList.add(jaxbFile.getAbsolutePath());
+		argList.add("-s");
+		argList.add(outputDir);
+		argList.add("-d");
+		argList.add(outputDir);
 		// We will do the compilation manually, otherwise there may be problems
 		// if there are multiple JDKS installed. wsimport doesn't allow you to
 		// pass jdk-version option. JAX-WS sucks.
-		cmdList.add("-Xnocompile");
+		argList.add("-Xnocompile");
 		if (packageName != null) {
-			cmdList.add("-p");
-			cmdList.add(packageName);
+			argList.add("-p");
+			argList.add(packageName);
 		}
-		cmdList.add("-verbose");
-		cmdList.add("-extension");
-		cmdList.add(wsdlUrl);
+		argList.add("-verbose");
+		argList.add("-extension");
+		argList.add(wsdlUrl);
 
-		String[] cmdArray = new String[cmdList.size()];
-		cmdList.toArray(cmdArray);
+		String[] argArray = new String[argList.size()];
+		argList.toArray(argArray);
 
-		System.out.println(StringUtils.join(cmdArray, " "));
+		System.out.println(StringUtils.join(argArray, " "));
 
-		try {
-			String consoleOutput = SystemProcessUtils.exec(cmdArray);
-			if (consoleOutput.contains("Two declarations cause a collision in the ObjectFactory class")) {
-				throw new DeclarationCollisionException(consoleOutput);
-			}
 
-		} catch (SystemProcessException e) {
-			throw new WsdlImportException(e.getConsoleOutput());
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		boolean result = new WsimportTool(outputStream).run(argArray);
+		String output = new String(outputStream.toByteArray());
+		if (!result) {
+			throw new WsdlImportException(output);
+		}
+		if (output.contains("Two declarations cause a collision in the ObjectFactory class")) {
+			throw new DeclarationCollisionException(output);
 		}
 
 	}
