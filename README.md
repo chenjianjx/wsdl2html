@@ -14,6 +14,8 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 ## Run as a command line tool
 
+Note:  minimum jdk (not just jre) version: 1.8
+
 ```bash
 
 mvn package 
@@ -44,7 +46,7 @@ In your pom.xml, add the following:
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
-			<version>4.0.1</version>
+			<version>4.1.0</version>
 		</dependency>
 		...
 	</dependencies>	
@@ -54,9 +56,5 @@ In your pom.xml, add the following:
 
 
 ```java
-
-//Note: if you call this method in your code, make sure the jdk version you used to run your code is 
-// no lower than that of the jdk used by your "wsimport" to run in shell
-
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
 ```  
