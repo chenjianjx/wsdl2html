@@ -171,9 +171,6 @@ public class Wsdl2ByteCodes {
 		return generatedJaxbFile;
 	}
 
-	private static boolean isWindows() {
-		return System.getProperty("os.name").toLowerCase().contains("win");
-	}
 
 	static String formatDate(Date date, String pattern) {
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
