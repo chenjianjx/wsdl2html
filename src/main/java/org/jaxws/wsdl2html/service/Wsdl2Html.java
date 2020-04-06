@@ -21,11 +21,15 @@ import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
  */
 public class Wsdl2Html {
 
-	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine) throws WsdlImportException {
-		ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl);
+	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine, boolean isDebug) throws WsdlImportException {
+		ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl, isDebug);
 		Class<?> webServiceClass = getWebServiceClass(byteCodePackage);
 		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
 		return displayEngine.displayWebSerivce(serviceStubSet);
+	}
+
+	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine) throws WsdlImportException {
+		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine, false);
 	}
 
 	/**
