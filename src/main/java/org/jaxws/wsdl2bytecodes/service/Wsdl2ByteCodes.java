@@ -158,11 +158,6 @@ public class Wsdl2ByteCodes {
 
 	}
 
-	private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws WsdlImportException {
-		doWsImport(outputDir, wsdlUrl, packageName, false);
-	}
-
-
 	private static File copyDefaultJaxbFile(String outputDir) {
 
 		File generatedJaxbFile = new File(outputDir, "jaxb.xml");
