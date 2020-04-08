@@ -37,13 +37,18 @@ public class Wsdl2Html {
 	 * 
 	 * 
 	 * @param wsdlUrl
+	 * @param isDebug
 	 * @return
 	 * @throws WsdlImportException
 	 */
-	public static String generateHtml(String wsdlUrl) throws WsdlImportException {
+	public static String generateHtml(String wsdlUrl, boolean isDebug) throws WsdlImportException {
 		FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine();
 		String byteCodesDirParent = System.getProperty("java.io.tmpdir") + "/wsdl2html";
-		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine);
+		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine, isDebug);
+	}
+
+	public static String generateHtml(String wsdlUrl) throws WsdlImportException {
+		return generateHtml(wsdlUrl, false);
 	}
 
 	private static Class<?> getWebServiceClass(ByteCodePackage byteCodePackage) {

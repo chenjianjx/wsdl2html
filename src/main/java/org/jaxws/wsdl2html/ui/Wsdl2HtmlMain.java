@@ -29,6 +29,7 @@ public class Wsdl2HtmlMain {
 
 		List<String> argList = new ArrayList<String>(Arrays.asList(args));
 
+		// Using remove allows the debug flag to be in any position while keeping ordered params
 		boolean isDebug = argList.remove("--debug");
 
 		String wsdlUrl = argList.get(0);
@@ -38,6 +39,8 @@ public class Wsdl2HtmlMain {
 			outputRootDir = new File(argList.get(1));
 			outputRootDir.mkdirs();
 		}
+
+		if (isDebug) argList.add("--debug");
 
 		File byteCodeDir = getByteCodeDir(outputRootDir);
 		File htmlDir = getHtmlDir(outputRootDir);
