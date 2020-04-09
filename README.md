@@ -31,7 +31,7 @@ cd /path/to/your/dir/wsdl2html*
 ```bash
 docker build -t wsdl2html .
 docker run --rm \
-  -v $(pwd)/output:/usr/src/output \
+  -v /path/to/your/html/directory:/usr/src/output \
   wsdl2html http://.../some?wsdl
 ```
 
