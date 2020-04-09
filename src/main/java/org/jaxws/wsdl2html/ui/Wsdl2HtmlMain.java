@@ -23,11 +23,14 @@ public class Wsdl2HtmlMain {
 	public static void main(String[] args) throws IOException, WsdlImportException {
 
 		if (args == null || args.length == 0) {
-			System.out.println("Params:  wsdlUrl [targetDir]");
+			System.out.println("Params:  wsdlUrl [targetDir] [--debug]");
 			return;
 		}
 
 		List<String> argList = new ArrayList<String>(Arrays.asList(args));
+
+		// Using remove allows the debug flag to be in any position while keeping ordered params
+		boolean isDebug = argList.remove("--debug");
 
 		String wsdlUrl = argList.get(0);
 
@@ -37,13 +40,15 @@ public class Wsdl2HtmlMain {
 			outputRootDir.mkdirs();
 		}
 
+		if (isDebug) argList.add("--debug");
+
 		File byteCodeDir = getByteCodeDir(outputRootDir);
 		File htmlDir = getHtmlDir(outputRootDir);
 
 		System.out.println("Generating from " + wsdlUrl);
 
 		FreemarkerWebServiceDisplayEngine displayEngine = createDisplayEngine(argList);
-		String html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine);
+		String html = Wsdl2Html.generateHtml(byteCodeDir.getAbsolutePath(), wsdlUrl, displayEngine, isDebug);
 		FileUtils.writeStringToFile(new File(htmlDir, "report-" + getUniqueNumber() + ".html"), html);
 		System.out.println("Please find the HTML files at " + htmlDir.getAbsolutePath());
 	}

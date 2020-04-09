@@ -33,15 +33,19 @@ import java.util.List;
  */
 public class Wsdl2ByteCodes {
 
-	public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws WsdlImportException {
+	public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl, boolean isDebug) throws WsdlImportException {
 		String currentTime = formatDate(new Date(), "yyyyMMddHHmmssSSS");
 		File byteCodeDir = createByteCodesDir(byteCodesDirParent, currentTime);
 		String packageName = generatePakcageName(currentTime);
 		byteCodeDir.mkdirs();
-		doWsImport(byteCodeDir.getAbsolutePath(), wsdlUrl, packageName);
+		doWsImport(byteCodeDir.getAbsolutePath(), wsdlUrl, packageName, isDebug);
 		doCompile(byteCodeDir);
 		System.out.println("Java files generated at: " + byteCodeDir);
 		return new ByteCodePackage(byteCodeDir, packageName);
+	}
+
+	public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws WsdlImportException {
+		return generate(byteCodesDirParent, wsdlUrl, false);
 	}
 
 	private static void doCompile(File sourceDir) throws WsdlImportException {
@@ -106,7 +110,7 @@ public class Wsdl2ByteCodes {
 	}
 
 	//See:  https://stackoverflow.com/a/16370962
-	private static void doWsImport(String outputDir, String wsdlUrl, String packageName) throws WsdlImportException {
+	private static void doWsImport(String outputDir, String wsdlUrl, String packageName, boolean isDebug) throws WsdlImportException {
 
 
 
@@ -128,6 +132,9 @@ public class Wsdl2ByteCodes {
 		if (packageName != null) {
 			argList.add("-p");
 			argList.add(packageName);
+		}
+		if (isDebug) {
+			argList.add("-Xdebug");
 		}
 		argList.add("-verbose");
 		argList.add("-extension");

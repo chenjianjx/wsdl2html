@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>wsdl2html</artifactId>
-	<version>4.1.0</version>
+	<version>4.2.0</version>
 	<name>SOAP WSDL to Html</name>
 	<description>A java tool to convert wsdl xml to readable doc</description>
 	<url>https://github.com/chenjianjx/wsdl2html</url>
