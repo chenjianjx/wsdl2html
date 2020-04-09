@@ -18,7 +18,7 @@ Note:  minimum jdk (not just jre) version: 1.8
 
 ```bash
 
-mvn package 
+mvn clean package 
 unzip target/wsdl2html*jarset.zip -d /path/to/your/dir
 cd /path/to/your/dir/wsdl2html*
 ./wsdl2html.sh http://.../some?wsdl /path/to/your/html/directory  
@@ -46,7 +46,7 @@ In your pom.xml, add the following:
 		<dependency>
 			<groupId>com.github.chenjianjx</groupId>
 			<artifactId>wsdl2html</artifactId>
-			<version>4.1.0</version>
+			<version>4.2.0</version>
 		</dependency>
 		...
 	</dependencies>	

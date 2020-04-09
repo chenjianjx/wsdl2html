@@ -28,9 +28,6 @@ public class Wsdl2Html {
 		return displayEngine.displayWebSerivce(serviceStubSet);
 	}
 
-	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine) throws WsdlImportException {
-		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine, false);
-	}
 
 	/**
 	 * 

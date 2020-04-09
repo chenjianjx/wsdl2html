@@ -14,9 +14,7 @@ import org.junit.Test;
 
 public class ByteCodePackageLoadingServiceTest {
 
-	/**
-	 * @see org.jaxws.bytecodes2stub.service.ByteCodePackageLoadingService#getRelativePath
-	 */
+
 	@Test
 	public void testGetRelativePath() {
 

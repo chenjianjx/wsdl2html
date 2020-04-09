@@ -44,9 +44,6 @@ public class Wsdl2ByteCodes {
 		return new ByteCodePackage(byteCodeDir, packageName);
 	}
 
-	public static ByteCodePackage generate(String byteCodesDirParent, String wsdlUrl) throws WsdlImportException {
-		return generate(byteCodesDirParent, wsdlUrl, false);
-	}
 
 	private static void doCompile(File sourceDir) throws WsdlImportException {
 		System.out.println("Compiling stubs");
@@ -111,9 +108,6 @@ public class Wsdl2ByteCodes {
 
 	//See:  https://stackoverflow.com/a/16370962
 	private static void doWsImport(String outputDir, String wsdlUrl, String packageName, boolean isDebug) throws WsdlImportException {
-
-
-
 
 		File jaxbFile = copyDefaultJaxbFile(outputDir);
 
