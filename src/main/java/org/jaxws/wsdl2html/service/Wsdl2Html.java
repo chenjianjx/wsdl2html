@@ -1,5 +1,6 @@
 package org.jaxws.wsdl2html.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -21,13 +22,13 @@ import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
  */
 public class Wsdl2Html {
 
-	public static String generateHtml(String byteCodesDirParent, String wsdlUrl, WebServiceDisplayEngine displayEngine, boolean isDebug) throws WsdlImportException {
-		ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl, isDebug);
-		Class<?> webServiceClass = getWebServiceClass(byteCodePackage);
-		WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
+	public static String generateHtml(final String byteCodesDirParent, final String wsdlUrl,
+			final WebServiceDisplayEngine displayEngine, final boolean isDebug) throws WsdlImportException {
+		final ByteCodePackage byteCodePackage = Wsdl2ByteCodes.generate(byteCodesDirParent, wsdlUrl, isDebug);
+		final List<Class<?>> webServiceClass = getWebServiceClass(byteCodePackage);
+		final WebServiceStubSet serviceStubSet = WebServiceStubSetFactory.createWebServiceStubSet(webServiceClass);
 		return displayEngine.displayWebSerivce(serviceStubSet);
 	}
-
 
 	/**
 	 * 
@@ -38,25 +39,28 @@ public class Wsdl2Html {
 	 * @return
 	 * @throws WsdlImportException
 	 */
-	public static String generateHtml(String wsdlUrl, boolean isDebug) throws WsdlImportException {
-		FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine.createEngine();
-		String byteCodesDirParent = System.getProperty("java.io.tmpdir") + "/wsdl2html";
+	public static String generateHtml(final String wsdlUrl, final boolean isDebug) throws WsdlImportException {
+		final FreemarkerWebServiceDisplayEngine displayEngine = ClasspathFreemarkerWebServiceDisplayEngine
+				.createEngine();
+		final String byteCodesDirParent = System.getProperty("java.io.tmpdir") + "/wsdl2html";
 		return generateHtml(byteCodesDirParent, wsdlUrl, displayEngine, isDebug);
 	}
 
-	public static String generateHtml(String wsdlUrl) throws WsdlImportException {
+	public static String generateHtml(final String wsdlUrl) throws WsdlImportException {
 		return generateHtml(wsdlUrl, false);
 	}
 
-	private static Class<?> getWebServiceClass(ByteCodePackage byteCodePackage) {
-		List<Class<?>> allClasses = ByteCodePackageLoadingService.loadAll(byteCodePackage);
-
-		for (Class<?> clazz : allClasses) {
+	private static List<Class<?>> getWebServiceClass(final ByteCodePackage byteCodePackage) {
+		final List<Class<?>> allClasses = ByteCodePackageLoadingService.loadAll(byteCodePackage);
+		final List<Class<?>> annotatedClasses = new ArrayList<Class<?>>();
+		for (final Class<?> clazz : allClasses) {
 			if (clazz.isInterface() && clazz.isAnnotationPresent(WebService.class)) {
-				return clazz;
+				annotatedClasses.add(clazz);
 			}
 		}
-		throw new IllegalStateException("No WebService Class found ! ");
+		if (annotatedClasses.size()==0)
+			throw new IllegalStateException("No WebService Class found ! ");
+		return annotatedClasses;
 	}
 
 }
