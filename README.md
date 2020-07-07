@@ -16,8 +16,10 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 Note:  minimum jdk (not just jre) version: 1.8
 
-```bash
+Clone or download the code
 
+```bash
+cd wsdl2html
 mvn clean package 
 unzip target/wsdl2html*jarset.zip -d /path/to/your/dir
 cd /path/to/your/dir/wsdl2html*
@@ -28,7 +30,10 @@ cd /path/to/your/dir/wsdl2html*
 
 ## Run with docker
 
+Clone or download the code
+
 ```bash
+cd wsdl2html
 docker build -t wsdl2html .
 docker run --rm \
   -v /path/to/your/html/directory:/usr/src/output \
