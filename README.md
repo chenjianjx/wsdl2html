@@ -33,7 +33,8 @@ cd /path/to/your/dir/wsdl2html*
 Clone or download the code
 
 ```bash
-./run-in-docker.sh
+./run-in-docker.sh http://.../some?wsdl /path/to/your/html/directory  
+# or run-in-docker.bat for windows
 ```
 
 ## Run it inside your application
