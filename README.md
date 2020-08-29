@@ -41,7 +41,7 @@ cd /path/to/your/dir/wsdl2html*
 
 ## Run it inside your application
 
-* Go to https://mvnrepository.com/artifact/com.github.chenjianjx/wsdl2html to find the latest version
+* Go to https://search.maven.org/search?q=a:wsdl2html to find the latest version
 * Add it as maven/gradle dependency 
 * Call the library: 
 
