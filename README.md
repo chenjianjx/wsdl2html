@@ -12,6 +12,16 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 # How to run
 
+## Run as a local webapp (inside docker)
+
+Copy [docker-compose.yml](./docker-compose.yml) to your local disk
+```bash
+docker-compose up
+```
+Then go to http://localhost:7180
+
+You will see ![wsdl2html-web-app](doc/image/wsdl2html-web-app.png)
+
 ## Run as a command line tool
 
 Note:  minimum jdk (not just jre) version: 1.8
@@ -28,20 +38,12 @@ cd /path/to/your/dir/wsdl2html*
 
 ```
 
-## Run with docker
-
-Clone or download the code
-
-```bash
-./run-in-docker.sh http://.../some?wsdl /path/to/your/html/directory  
-# or run-in-docker.bat for windows
-```
 
 ## Run it inside your application
 
-Add the maven/gradle dependency. See: https://mvnrepository.com/artifact/com.github.chenjianjx/wsdl2html
- 
-Then, 
+* Go to https://mvnrepository.com/artifact/com.github.chenjianjx/wsdl2html to find the latest version
+* Add it as maven/gradle dependency 
+* Call the library: 
 
 ```java
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
