@@ -14,11 +14,12 @@ Check the full html [here](https://rawgit.com/chenjianjx/wsdl2html/master/doc/sa
 
 ## Run as a local webapp (inside docker)
 
-Copy [docker-compose.yml](./docker-compose.yml) to your local disk
+* Copy [docker-compose.yml](./docker-compose.yml) to your local disk
+* Run it
 ```bash
 docker-compose up
 ```
-Then go to http://localhost:7180
+* Go to http://localhost:7180
 
 You will see ![wsdl2html-web-app](doc/image/wsdl2html-web-app.png)
 
