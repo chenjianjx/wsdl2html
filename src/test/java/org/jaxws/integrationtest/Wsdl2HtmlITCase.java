@@ -53,7 +53,6 @@ public class Wsdl2HtmlITCase {
 	 */
 	@Test
 	public void testPublicWsdls() throws Exception {
-		doGenerate("https://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl", "AWSECommerceService.html");
 		doGenerate("http://www.webservicex.com/globalweather.asmx?wsdl", "globalweather.html");
 		doGenerate("http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL", "Weather.html");
 		doGenerate("http://www.thomas-bayer.com/axis2/services/BLZService?wsdl", "BLZService.html");
@@ -75,12 +74,12 @@ public class Wsdl2HtmlITCase {
 	}
 
 	@WebService(endpointInterface = "org.jaxws.integrationtest.exampleWebService.EmptyWebService")
-	private static final class EmptySoapServiceImpl implements EmptyWebService {
+	public static final class EmptySoapServiceImpl implements EmptyWebService {
 
 	}
 
 	@WebService(endpointInterface = "org.jaxws.integrationtest.exampleWebService.BbsWebService")
-	private static final class BbsSoapServiceImpl implements BbsWebService {
+	public static final class BbsSoapServiceImpl implements BbsWebService {
 
 		@Override
 		public SinglePostResponse newPost(Long currentUserId, NewPostRequest request) {
