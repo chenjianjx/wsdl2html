@@ -33,32 +33,15 @@ cd /path/to/your/dir/wsdl2html*
 Clone or download the code
 
 ```bash
-cd wsdl2html
-docker build -t wsdl2html .
-docker run --rm \
-  -v /path/to/your/html/directory:/usr/src/output \
-  wsdl2html http://.../some?wsdl
+./run-in-docker.sh http://.../some?wsdl /path/to/your/html/directory  
+# or run-in-docker.bat for windows
 ```
 
 ## Run it inside your application
 
-In your pom.xml, add the following: 
-
-```xml
-
-	<dependencies>
-		...	
-		<dependency>
-			<groupId>com.github.chenjianjx</groupId>
-			<artifactId>wsdl2html</artifactId>
-			<version>4.2.0</version>
-		</dependency>
-		...
-	</dependencies>	
-
-```
-
-
+Add the maven/gradle dependency. See: https://mvnrepository.com/artifact/com.github.chenjianjx/wsdl2html
+ 
+Then, 
 
 ```java
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 

@@ -5,3 +5,5 @@
 .DS_Store
 /target/
 /output*
+/run-in-docker-jdk11.sh
+/Dockerfile-jdk11

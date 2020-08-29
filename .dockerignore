@@ -1,0 +1,8 @@
+.git
+doc
+output
+target
+.classpath
+.project
+*.md
+*.imi
