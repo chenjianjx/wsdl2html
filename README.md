@@ -49,3 +49,8 @@ cd /path/to/your/dir/wsdl2html*
 ```java
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
 ```  
+
+
+# More information
+
+The source of the local webapp is https://github.com/chenjianjx/wsdl2html-web 
