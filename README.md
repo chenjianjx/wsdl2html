@@ -42,9 +42,13 @@ cd /path/to/your/dir/wsdl2html*
 
 ## Run it inside your application
 
-* Go to https://search.maven.org/search?q=a:wsdl2html to find the latest version
-* Add it as maven/gradle dependency 
-* Call the library: 
+```
+<dependency>
+  <groupId>com.github.chenjianjx</groupId>
+  <artifactId>wsdl2html</artifactId>
+  <version>4.2.1</version>
+</dependency>
+```
 
 ```java
 String html = org.jaxws.wsdl2html.service.Wsdl2Html.generateHtml(wsdlUrl); 
