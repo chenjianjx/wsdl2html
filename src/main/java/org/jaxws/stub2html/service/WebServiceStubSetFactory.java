@@ -17,12 +17,14 @@ import org.jaxws.stub2html.model.WebServiceStubSet;
  */
 public class WebServiceStubSetFactory {
 
-	public static WebServiceStubSet createWebServiceStubSet(Class<?> webServiceClass) {
-		List<Method> methods = getWebMethods(webServiceClass);
+	public static WebServiceStubSet createWebServiceStubSet(List<Class<?>> webServiceClasses) {
 		WebServiceStubSet serviceStubs = new WebServiceStubSet();
-		serviceStubs.setWebServiceClass(webServiceClass);
-		for (Method method : methods) {
-			serviceStubs.addMethodStub(createWebMethodStubSet(method));
+		for (Class<?> webServiceClass : webServiceClasses) {
+			List<Method> methods = getWebMethods(webServiceClass);
+			serviceStubs.setWebServiceClass(webServiceClass);
+			for (Method method : methods) {
+				serviceStubs.addMethodStub(createWebMethodStubSet(method));
+			}				
 		}
 		return serviceStubs;
 	}
