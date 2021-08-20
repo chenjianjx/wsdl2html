@@ -46,7 +46,7 @@ cd /path/to/your/dir/wsdl2html*
 <dependency>
   <groupId>com.github.chenjianjx</groupId>
   <artifactId>wsdl2html</artifactId>
-  <version>4.2.1</version>
+  <version>4.2.2</version>
 </dependency>
 ```
 
