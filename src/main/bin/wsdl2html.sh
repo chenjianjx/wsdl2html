@@ -17,4 +17,4 @@ done
 PRGDIR=`dirname "$PRG"`      
   
   
-java -cp $(echo $PRGDIR/jars/*.jar | tr ' ' ':') -Xmx128m org.jaxws.wsdl2html.ui.Wsdl2HtmlMain $*  
+java -cp "$PRGDIR/jars/*" -Xmx128m org.jaxws.wsdl2html.ui.Wsdl2HtmlMain $*  
